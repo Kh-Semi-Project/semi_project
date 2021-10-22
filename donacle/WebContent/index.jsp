@@ -9,5 +9,7 @@
 안녕
 <%-- <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script> --%>
 <body>
+
+	<input type="button" value="테스트" onclick="location.href='<%= request.getContextPath() %>/product_writing_List';">
 </body>
 </html>
