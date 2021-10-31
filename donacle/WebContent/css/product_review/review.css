@@ -1,0 +1,26 @@
+#review-container{
+    display: inline;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+}
+
+#tbl-review-uploadpage{
+	margin: auto;
+    text-align: end;
+    width:70%;
+}
+
+#tbl-review-uploadpage tr td{
+	
+	height: 45px;
+}
+
+textarea[name=reviewContent]{
+
+}
+
+.inp-inner{
+	width: 100%;
+	min-height: 25px;	
+}
