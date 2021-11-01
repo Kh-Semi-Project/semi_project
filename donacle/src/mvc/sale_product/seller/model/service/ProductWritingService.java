@@ -12,9 +12,9 @@ import mvc.sale_product.seller.model.vo.ProductWriting;
 public class ProductWritingService {
 	ProductWritingDao pwdao = new ProductWritingDao();
 	
-	public List<ProductWriting> selectProductWritingList() {
+	public List<ProductWriting> selectProductWritingList(int start, int end) {
 		Connection conn = getConnection();
-		List<ProductWriting> list = pwdao.selectProductWritingList(conn);
+		List<ProductWriting> list = pwdao.selectProductWritingList(conn, start, end);
 		close(conn);
 		return list;
 	}

@@ -48,7 +48,7 @@ public class ProductWritingDao {
 		
 		return totalContents;
 	}
-	public List<ProductWriting> selectProductWritingList(Connection conn) {
+	public List<ProductWriting> selectProductWritingList(Connection conn, int start, int end) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectProductWritingList");
@@ -57,6 +57,9 @@ public class ProductWritingDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -64,10 +67,13 @@ public class ProductWritingDao {
 				ProductWriting pw = new ProductWriting();
 				pw.setId(rset.getString("id"));
 				pw.setProduct_code(rset.getInt("product_writing_code"));
-				pw.setProduct_writing_yn(rset.getString("product_writing_yn"));
 				pw.setRead_count(rset.getInt("read_count"));
 				pw.setProduct_writing_date(rset.getDate("product_writing_date"));
-				
+				pw.setCategory_code(rset.getInt("category_code"));
+				pw.setProduct_price(rset.getInt("product_price"));
+				pw.setProduct_img(rset.getString("product_img"));
+				pw.setProduct_count(rset.getInt("product_count")); //남은 제품 개수
+				pw.setCategory_name(rset.getString("category_name"));
 				list.add(pw);
 			}
 			

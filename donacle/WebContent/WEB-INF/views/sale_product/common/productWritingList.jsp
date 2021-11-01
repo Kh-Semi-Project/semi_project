@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="java.util.List"%>
+    <%@page import="mvc.sale_product.seller.model.vo.ProductWriting"%>
    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/productList.css" />
+<%
+	List<ProductWriting> list = (List<ProductWriting>) request.getAttribute("list");
+%>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 	<style>
 		#pro_Counts {
@@ -63,7 +68,20 @@
 			<tr style="display:none;">
 				<td>제품코드</td>
 			</tr>
+			
+<%for(ProductWriting pw : list){ %>
+			<tr>
+				<td><%= pw.getProduct_img() %></td>
+				<td>
+					<%= pw.getId() %>
+				</td>
+				<td><%= pw.getProduct_name() %></td>
+				<td><%= pw.getProduct_price() %></td>
+			</tr>
+<%} %>
 		</table>
+		<div id='pageBar'><%= request.getAttribute("pagebar") %></div>
+
 	<form
 		name = "productAddFrm"
 		action = ""
