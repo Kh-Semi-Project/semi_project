@@ -6,7 +6,6 @@
 <%
 	ProductWriting pw = (ProductWriting) request.getAttribute("ProductWriting");
 %>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/common.css"/>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 	<style>
@@ -14,8 +13,16 @@
 			display : inline;
 		}
 		#photo_print {
-			width : 250px;
-			height : 350px;
+			width : 200px;
+			height : 200px;
+		}
+		#productAddT{
+			width : 60%;
+			height : 400px;
+			margin : auto;
+		}
+		body{
+			text-align : center;
 		}
 	</style>
 	<section id = "product-add-container">
@@ -25,10 +32,10 @@
 		action = "<%=request.getContextPath() %>/sale_product/productUpdate"
 		method = "post"
 	>
-		<table>
+		<table id = "productAddT">
 			<tr>
 				<td rowspan ="6">
-						<img id = "photo_print" src ="<%=pw.getProduct_img() %>" alt ="제품사진" onerror= "this.style.display='none'" width = 300px height = 500px><br/>
+						<img id = "photo_print" src ="<%=pw.getProduct_img() %>" alt ="제품사진" onerror= "this.style.display='none'" ><br/>
 						<!-- 파일 추가-->
 						1. <input id="photo" class="file" type="file" name="mainimage" 
 						                   value="" onchange="getfile()"><br><br>
