@@ -9,19 +9,20 @@ ul.main-nav{
 }
 ul.main-nav li { 
 	list-style-type: none; 
-	width: 8em; 
+	width: 350px; 
 	height: 2em;
 	float: left; 
 	text-align: center; 
 	font-family: "휴먼모음T", sans-serif; 
 	border-left: 1px black solid;
-	background-color: #c0c0c0; 
+	background-color: #F8F4F3;
+	opacity : 0.7;
 	/* 메뉴밑줄트랜지션용 */
 	position:relative;	
 }
 ul.access-sub {display : none;}
-ul.main-nav li:first-of-type{border-left:1px #c0c0c0 solid;}
-ul.access-sub li{border-left:1px #c0c0c0 solid;}
+ul.main-nav li:first-of-type{border-left:1px #F8F4F3 solid;}
+ul.access-sub li{border-left:1px #F8F4F3 solid; }
 ul.main-nav li a {
     /*a태그의 display기본값은 inline임*/
     /* inline요소의 padding, margin은 제대로 동작하지 않음.(컨텐츠의 시각요소기준으로 제멋대로임	) */
