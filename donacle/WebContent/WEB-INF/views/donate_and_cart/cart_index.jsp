@@ -147,10 +147,7 @@ $("#check-all").on('click', function(){
 
 $("[name=delete-btn]").on('click', function(){
 	const a = "#cartList"+$(this).attr("id");
-<<<<<<< HEAD
-=======
 	alert(a);
->>>>>>> branch 'jkyeom' of https://github.com/Kh-Semi-Project/semi_project.git
 	$(a).submit();
 });
 
