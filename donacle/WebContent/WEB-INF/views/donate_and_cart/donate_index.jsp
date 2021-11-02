@@ -27,6 +27,7 @@ h1 {
 	text-align: center;
 }
 
+<<<<<<< HEAD
 h3 {
 	padding: 5px;
 	font-family: 'Pretendard-ExtraLight';
@@ -61,6 +62,43 @@ h3 {
 	<hr />
 	<h1>후원</h1>
 	<h3><%= name %> 님, <br/> 총 후원액 <%= price %>원</h3>
+=======
+h3, h4 {
+	background-color: #ececec;
+	font-family: 'Pretendard-ExtraLight';
+	text-align: right;
+}
+#money-video {
+	width: 100%;
+	height: 300px;
+}
+#donate {
+	margin: auto;
+}
+#play {
+	display: block;
+	margin: auto;
+	margin-top: 20px;
+	padding: 5px;
+	background-color: #1c1e2d;
+	color: white;
+}
+</style>
+<% 
+	int price = 0;
+	String name = "";
+	for(Donate d : donate){ 
+	price += d.getDonate_price();
+	name = d.getName();
+	}
+%>	
+<section id = "donate">
+	<a href="<%= request.getContextPath() %>">Donacle</a>
+	<hr />
+	<h1>후원</h1>
+	<h3><%= name %> 님, 총 후원액</h3>
+	<h4><%= price %>원</h4>
+>>>>>>> branch 'jkyeom' of https://github.com/Kh-Semi-Project/semi_project.git
 	<video src="<%= request.getContextPath() %>/css/donate_and_cart/money2.mp4" id="money-video"></video>
 	<br />
 	<input type="submit" id="play" value="후원하기"/>

@@ -18,7 +18,11 @@ public class CartListDao {
 	private Properties prop = new Properties();
 
 	public CartListDao() {
+<<<<<<< HEAD
 		String filepath = CartListDao.class.getResource("/sql/donate_and_cart/cartList-query.properties").getPath();
+=======
+		String filepath = CartListDao.class.getResource("/sql/cartList/cartList-query.properties").getPath();
+>>>>>>> branch 'jkyeom' of https://github.com/Kh-Semi-Project/semi_project.git
 		try {
 			prop.load(new FileReader(filepath));
 		} catch (IOException e) {

@@ -21,7 +21,11 @@ public class DonateDao {
 	private Properties prop = new Properties();
 
 	public DonateDao() {
+<<<<<<< HEAD
 		String filepath = DonateDao.class.getResource("/sql/donate_and_cart/donate-query.properties").getPath();
+=======
+		String filepath = DonateDao.class.getResource("/sql/donate/donate-query.properties").getPath();
+>>>>>>> branch 'jkyeom' of https://github.com/Kh-Semi-Project/semi_project.git
 		try {
 			prop.load(new FileReader(filepath));
 		} catch (IOException e) {
