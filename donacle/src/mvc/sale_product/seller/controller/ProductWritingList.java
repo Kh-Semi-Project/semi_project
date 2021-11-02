@@ -26,33 +26,33 @@ public class ProductWritingList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1.사용자입력값처리 cPage numPerPage = 10
-//		int cPage = 1;
-//		int numPerPage = 10;
-//		try {
-//			cPage = Integer.parseInt(request.getParameter("cPage"));
-//		} catch(NumberFormatException e) {
-//			
-//		}
+		int cPage = 1;
+		int numPerPage = 9;
+		try {
+			cPage = Integer.parseInt(request.getParameter("cPage"));
+		} catch(NumberFormatException e) {
+			
+		}
 		// 2.업무로직
 		// a.content영역 - paging query
-//		int start = cPage * numPerPage - (numPerPage - 1);
-//		int end = cPage * numPerPage;
-		List<ProductWriting> list = pws.selectProductWritingList();
+		int start = cPage * numPerPage - (numPerPage - 1);
+		int end = cPage * numPerPage;
+		List<ProductWriting> list = pws.selectProductWritingList(start,end);
 		System.out.println("list@servlet = " + list);
 //		
 //		// b.pagebar영역 
 //		// totalContents, url 준비
-//		int totalContents = pws.selectTotalContents();
-//		String url = request.getRequestURI();
-//		String pagebar = MvcUtils.getPagebar(cPage,  numPerPage, totalContents, url);
-//		System.out.println("pagebar@servlet = " + pagebar);
-//		
+		int totalContents = pws.selectTotalContents();
+		String url = request.getRequestURI();
+		String pagebar = MvcUtils.getPagebar(cPage,  numPerPage, totalContents, url);
+		System.out.println("pagebar@servlet = " + pagebar);
+		
 //		// 3.view단 forwarding
-//		request.setAttribute("list", list);
-//		request.setAttribute("pagebar", pagebar);
-//		request
-//			.getRequestDispatcher("/WEB-INF/views/sale_product/common/productList.jsp")
-//			.forward(request,  response);
+		request.setAttribute("list", list);
+		request.setAttribute("pagebar", pagebar);
+		request
+			.getRequestDispatcher("/WEB-INF/views/sale_product/common/productWritingList.jsp")
+			.forward(request,  response);
 	}
 
 }
