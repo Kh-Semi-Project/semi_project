@@ -10,6 +10,13 @@
 <%-- <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script> --%>
 <body>
 
-	<input type="button" value="테스트" onclick="location.href='<%= request.getContextPath() %>/product_writing_List';">
+	<input type="button" value="판매글리스트" onclick="location.href='<%= request.getContextPath() %>/sale_product/productwritingList?category=0';">
+	<input type="button" value="제품리스트" onclick="location.href='<%= request.getContextPath() %>/sale_product/productList?id=test0';">
+	<input type="button" value="제품구매리스트" onclick="location.href='<%= request.getContextPath() %>/sale_product/productBuyList?id=test0';">
+	<input type="button" value="관리자승인요청리스트" onclick="location.href='<%= request.getContextPath() %>/sale_product/productWritingAdminCheckList';">
+	<input type="button" value="제품추가" onclick="location.href='<%= request.getContextPath() %>/sale_product/productAddpage';">
+	
+	<br/>
 </body>
 </html>
+<!-- 메뉴 부분 로고, 로그인 회원가입 마이페이지 -->
