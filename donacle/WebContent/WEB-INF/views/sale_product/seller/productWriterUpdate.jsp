@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
-
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/common.css"/>
 	<section id = "product-writing_update-container">
 	<h2>물건 구매</h2>
 	<form
