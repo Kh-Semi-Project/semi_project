@@ -30,7 +30,7 @@ for(ProductWriting pw : productList){
 index++;
 %>
 		<tr>
-			<td colspan="10" class="tdclass">donacle<td>
+			<td colspan="11" class="tdclass">donacle<td>
 		</tr>
 		<tr>
 			<td><%=index %></td>
