@@ -6,10 +6,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-안녕
-<%-- <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script> --%>
+<script src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <body>
-
-	<input type="button" value="테스트" onclick="location.href='<%= request.getContextPath() %>/product_writing_List';">
+      <form
+			name="introduceFrm"
+        	action ="<%= request.getContextPath() %>/homepage_introduce/introduce"
+        	method="GET">
+      </form>
+<script>
+$("[name=introduceFrm]").submit();
+</script>
 </body>
 </html>
