@@ -28,7 +28,7 @@ public class CommentEnrollServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String id = request.getParameter("id");
-		id = "test"; // 세션 알아내서 수정하기
+		id = "test0";
 
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		String commentsType = request.getParameter("commentsType");
@@ -39,8 +39,8 @@ public class CommentEnrollServlet extends HttpServlet {
 		int commentsNo = commentService.insertComment(comment);
 		comment = commentService.selectComment(commentsNo);
 		comment.setCommentsNo(commentsNo);
-		
-		response.setContentType("application/json; charset=UTF-8"); //송출하는 부분을 response 처리함 
-		response.getWriter().write(new Gson().toJson(comment)); //Gson().toJson(comment) 다시 보기 
+		comment.setReviewNo(reviewNo);
+		response.setContentType("application/json; charset=UTF-8");
+		response.getWriter().write(new Gson().toJson(comment));
 	}
 }	

@@ -23,9 +23,10 @@ public class ReviewFormServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//String id = ((Member)request.getSession().getAttribute("loginMember")).getId()
-		String id = "test";
+		String id = "test0"; //세션 정보 알아내서 수정하기!
 		
 		List<BuyLog> list = reviewService.selectBuyLog(id);
+		System.out.println("리뷰 데이터"+list);
 		if(list != null && list.size() > 0) {
 			request.setAttribute("buyLogList", list);
 			request.getRequestDispatcher("/WEB-INF/views/product_review/reviewForm.jsp").forward(request, response);			
