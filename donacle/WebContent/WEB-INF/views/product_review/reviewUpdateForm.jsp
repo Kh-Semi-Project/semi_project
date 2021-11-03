@@ -68,7 +68,7 @@ $(() => {
 				</tr>
 				<tr>
 					<th colspan="2">
-						<input style= "margin-top: 15px" type="submit" value="등록하기">
+						<input style="margin-top: 15px; background:dimgrey; color: white; border-radius: 3px; height: 30px;" type="submit" value="등록하기">
 					</th>
 				</tr>
 			</table>
