@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 		<footer>
+            <div class="copyright">
+                <span>상호: (주)두나클</span><b> | </b>
+                <span>이메일: contact@donacle.com</span><b> | </b>
+                <span>대표전화: 0000-0000</span><br>
+                <span>주소: 서울특별시 강남구 테헤란로14길 6 남도빌딩</span><br>
+                ⓒ2021.donacle all rights reserved.
+            </div>
             <a href="#" id="tothetop"><img src="https://i.ibb.co/KK0H2Pz/free-icon-up-arrow-156924.png" alt=""></a>
         </footer>
     </div>
