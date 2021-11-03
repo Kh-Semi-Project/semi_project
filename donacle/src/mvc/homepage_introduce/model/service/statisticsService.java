@@ -8,6 +8,7 @@ import java.util.List;
 
 import mvc.homepage_introduce.model.dao.statisticsDao;
 import mvc.homepage_introduce.model.vo.Statistics;
+import mvc.sale_product.seller.model.vo.ProductWriting;
 
 public class statisticsService {
 

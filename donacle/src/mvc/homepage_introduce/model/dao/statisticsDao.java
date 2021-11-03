@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Properties;
 
 import mvc.homepage_introduce.model.vo.Statistics;
-
+import mvc.sale_product.seller.model.dao.ProductWritingDao;
+import mvc.sale_product.seller.model.vo.ProductWriting;
 
 public class statisticsDao {
 
