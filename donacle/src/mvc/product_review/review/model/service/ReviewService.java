@@ -123,7 +123,15 @@ public class ReviewService {
 		
 		try {
 			num += reviewDao.updateReview(conn,review);
-			if(review.getAttach() != null) num += attachmentDao.updateAttach(conn,review.getAttach());
+			if(review.getAttach() != null) {
+				Review temp = reviewDao.selectReview(conn, review.getReviewNo());
+				
+				if(temp.getAttach() != null && temp.getAttach().getAttachNo() != 0) {
+					num += attachmentDao.updateAttach(conn,review.getAttach());
+				}else {
+					num += attachmentDao.insertAttachment(conn, review.getAttach());
+				}			
+			}
 			commit(conn);
 		} catch (Exception e) {
 			rollback(conn);

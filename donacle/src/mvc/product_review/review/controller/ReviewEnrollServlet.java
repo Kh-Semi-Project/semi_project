@@ -35,7 +35,7 @@ public class ReviewEnrollServlet extends HttpServlet {
 				new MvcFileRenamePolicy()
 			);
 		//String id = ((Member)request.getSession().getAttribute("loginMember")).getId()
-		String id = "test";
+		String id = "test0"; //세션정보 알아내서 수정하기
 		
 		Review review = new Review();
 		review.setId(id);
