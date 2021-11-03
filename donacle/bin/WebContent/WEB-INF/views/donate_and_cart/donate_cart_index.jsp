@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>로그인폼입니당.</h1>
-	<p>로그인폼</p>
+
 </body>
 </html>
