@@ -40,6 +40,7 @@ public class ReviewDao {
 		String sql = prop.getProperty("insertReview");
 		int result = 0;
 		
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, review.getProductBuyCode());

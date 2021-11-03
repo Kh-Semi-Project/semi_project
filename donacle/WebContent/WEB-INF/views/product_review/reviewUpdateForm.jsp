@@ -6,7 +6,7 @@
 <%
 	Review review = (Review) request.getAttribute("review");
 %>
-<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %> 
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/product_review/review.css" />
 <script>
 /**
@@ -35,40 +35,40 @@ $(() => {
 });
 </script>
 <section id="review-container">
-	<h2>제품후기 | donacle의 제품후기를 남겨주세요 :) </h2>
-	<div>
+	<div style= "padding: 200px 300px;">
+		<h2>제품후기 | donacle의 제품후기를 남겨주세요 :) </h2>
 		<form name="reviewForm" action="<%=request.getContextPath() %>/review/reviewUpdate"  method="post" enctype="multipart/form-data">
 			<input type="hidden" name="reviewNo" value="<%=review.getReviewNo()%>"/>
 			<table id="tbl-review-uploadpage">
 				<tr>
-					<th>제 목</th>
-					<td><input class="inp-inner" type="text" name="reviewTitle" required value="<%=review.getReviewTitle() %>"></td>
+					<th style="text-align: center; background-color: #eee; width: 70px;">제 목</th>
+					<td style="border: 1px solid #ccc; padding 5px;"><input style="float: left; margin: 4px; width: 350px; height: 30px;" type="text" name="reviewTitle" required value="<%=review.getReviewTitle() %>"></td>
 				</tr>
 				<tr>
-					<th>제 목</th>
-					<td>
-						<input class="inp-inner" name="productBuyCode" required="required" value="<%=review.getProductBuyCode() %>" />
+					<th style="text-align: center; background-color: #eee; width: 70px;">주문 번호</th>
+					<td style="border: 1px solid #ccc; padding 5px;">
+						<input style="float: left; margin: 4px; width: 250px; height: 35px;" name="productBuyCode" required="required" value="<%=review.getProductBuyCode() %>" />
 					</td>
 				</tr>
 				
 				<tr>
-					<th>첨부파일</th>
-					<td>
+					<th style="text-align: center; background-color: #eee; width: 70px;">첨부파일</th>
+					<td style="border: 1px solid #ccc; padding 5px;">
 						<%if(review.getAttach() != null && review.getAttach().getOriginalFilename() != null){%>
 							<span><%=review.getAttach().getOriginalFilename() %></span>
 						<%}%>
-						<label for="fileChk">기존 파일 삭제</label><input id="fileChk" type="checkbox" name="originDelete" /> 
-						<input class="inp-inner" type="file" name="upFile">
+						<label for="fileChk"> | 기존 파일 삭제</label><input id="fileChk" type="checkbox" name="originDelete" style="margin-right: 15px; margin-top:8px" /> 
+						<input style="float: left; margin: 4px;" type="file" name="upFile">
 						<input type="hidden" name="attachNo" value="<%=review.getAttach() != null ? review.getAttach().getAttachNo() : 0 %>" />
 					</td>
 				</tr>
 				<tr>
-					<th></th>
-					<td><textarea class="inp-inner" rows="5" cols="40" name="reviewContent" ><%=review.getReviewContent() %></textarea></td>
+					<th style="text-align: center; background-color: #eee; width: 70px;">내 용</th>
+					<td style="border: 1px solid #ccc; padding 5px;"><textarea style="float: left; margin: 4px;  width: 805px; height: 163px;" rows="5" cols="40" name="reviewContent" ><%=review.getReviewContent() %></textarea></td>
 				</tr>
 				<tr>
 					<th colspan="2">
-						<input type="submit" value="등록하기">
+						<input style= "margin-top: 15px" type="submit" value="등록하기">
 					</th>
 				</tr>
 			</table>
