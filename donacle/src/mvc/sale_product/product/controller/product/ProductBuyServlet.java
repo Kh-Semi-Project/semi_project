@@ -57,16 +57,5 @@ public class ProductBuyServlet extends HttpServlet {
 			
 		}	
 	}
-	
-	//해당 아이디의 구매 제품 리스트 출력하기
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String id = request.getParameter("id");
-//		List<ProductBuy> ProductBuyList = pws.ProductBuyList(id);
-//		System.out.println("제품구매성공@" + ProductBuyList);
-//		request.setAttribute("ProductBuyList", ProductBuyList);
-//		request
-//			.getRequestDispatcher("/WEB-INF/views/sale_product/consumer/productOrderCheck.jsp")
-//			.forward(request,  response);
-//	}
 
 }

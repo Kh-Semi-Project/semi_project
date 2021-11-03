@@ -535,8 +535,8 @@ public class ProductDao {
 
 	public int insertproductWriting(Connection conn, int product_code, String id) {
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("insertproductWritingtest");	
-//		String sql = prop.getProperty("insertProductWriting");	
+//		String sql = prop.getProperty("insertproductWritingtest");	
+		String sql = prop.getProperty("insertProductWriting");	
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);

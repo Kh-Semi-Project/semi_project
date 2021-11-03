@@ -94,6 +94,7 @@ td {
 					<th>상품 갯수</th>
 					<th>배송비</th>
 					<th>장바구니 삭제</th>
+					<th>주문하기</th>
 				</tr>
 <% 
 	int price = 0;
@@ -101,7 +102,7 @@ td {
 	price += (c.getProduct_price() * c.getProduct_cart_count()) + c.getShipping_fee();
 %>
 				<tr>
-					<td colspan="7" class="title-l"><span class="title-left">donacle</span></td>
+					<td colspan="8" class="title-l"><span class="title-left">donacle</span></td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="product" id="<%= c.getProduct_price()+c.getShipping_fee() %>"/></td>
@@ -110,7 +111,8 @@ td {
 					<td><%= c.getProduct_price() %>원</td>
 					<td><%= c.getProduct_cart_count() %>개</td>
 					<td id="shipping-price"><%= c.getShipping_fee() %>원</td>
-					<td><input type="button" value="삭제하기" name="delete-btn" id=<%= c.getCartList_no() %> /></td>
+					<td><input type="button" value="삭제하기" name="delete-btn" id = <%= c.getCartList_no() %> /></td>
+					<td><input type="button" value="주문하기" name="buy-btn" id = "cartList<%= c.getCartList_no()%>" /></td>
 				</tr>
 				<tr style="display:none;"><td>
 					<form 
@@ -119,20 +121,28 @@ td {
 						action="<%= request.getContextPath() %>/CartList/delete" 
 						method="POST">
 						<input type="hidden" name="cartListNo" id ="cartListNo" value="<%= c.getCartList_no() %>"/>
+						<input type="hidden" name="product_code" id ="product_code" value="<%= c.getProduct_code() %>"/>
+						<input type="hidden" name="product_buy_count" id ="product_buy_count" value="<%= c.getProduct_cart_count() %>"/>
+						<input type="hidden" name="product_buy_price" id ="product_buy_price" value="<%= (int)(c.getProduct_cart_count() * c.getProduct_price() * 0.9) %>"/>
+						<input type="hidden" name="product_donate_price" id ="product_donate_price" value="<%= (int)(c.getProduct_cart_count() * c.getProduct_price() * 0.1) %>"/>
+						<input type="hidden" name="price_sum" id ="price_sum" value="<%= c.getProduct_cart_count() * c.getProduct_price() %>"/>
 					</form>
 				</td></tr>
 							
 <% } %>
 				<tr>
 					<td style="display:none;"><input type="hidden" name = "price_sum_input" value="<%=price%>"/></td>
-					<th colspan="7" id="total-price">총 결제금액(상품금액 + 배송비) : <label id = "price_sum_label">0</label>원</th>
+					<th colspan="8" id="total-price">총 결제금액(상품금액 + 배송비) : <label id = "price_sum_label">0</label>원</th>
 				</tr>
-				<tr>
-					<td colspan="7"><input type="submit" id="order" value="주문하기" /></td>
-				</tr>
+
 			</table>
 	</div>
 <script>
+$("[name=buy-btn]").on('click',function(){
+	$("[name="+$(this).attr("id")+"]").attr('action',"<%= request.getContextPath() %>/sale_product/productBuy" );
+	$("[name="+$(this).attr("id")+"]").submit();
+});
+
 $("#check-all").on('click', function(){
 	if($("#check-all").is(":checked")){
 		const number = Number($("[name=price_sum_input]").val());
@@ -147,7 +157,6 @@ $("#check-all").on('click', function(){
 
 $("[name=delete-btn]").on('click', function(){
 	const a = "#cartList"+$(this).attr("id");
-	alert(a);
 	$(a).submit();
 });
 
