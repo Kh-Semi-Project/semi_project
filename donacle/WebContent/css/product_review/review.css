@@ -3,24 +3,29 @@
     text-align: center;
     width: 100%;
     margin: auto;
+    font-family: 'Pretendard-ExtraLight';
 }
 
 #tbl-review-uploadpage{
 	margin: auto;
     text-align: end;
     width:70%;
+    font-family: 'Pretendard-ExtraLight';
 }
 
 #tbl-review-uploadpage tr td{
 	
 	height: 45px;
+	font-family: 'Pretendard-ExtraLight';
+	
 }
 
 textarea[name=reviewContent]{
 
 }
 
-.inp-inner{
+/*.inp-inner{
 	width: 100%;
 	min-height: 25px;	
-}
+	font-family: 'Pretendard-ExtraLight';
+}*/

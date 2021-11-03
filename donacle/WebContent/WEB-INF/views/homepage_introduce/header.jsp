@@ -3,34 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>donacle</title>
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/homepage_introduce/introduce.css"/>
     <script src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 </head>
-<script>
-    $(document).ready(function(){
-        //스크롤시 헤더메뉴 상단 고정
-        $(window).scroll(function(){
-            scrollGnb();
-        });
-
-        //헤더메뉴 상단고정 함수
-        function scrollGnb(){
-	        var windowTop = $(window).scrollTop();
-            if(windowTop > 0) {
-  	            $("#content").addClass('scroll');
-            } else {
-  	            $("#content").removeClass('scroll');
-            }
-        }
-        scrollGnb();//새로고침, 최초 접속시에 확인
-</script>
 <body>
     <div id="layout">
         <header>
             <div id="header-wrap">
                 <div id="left-menu">
-                    <img src="https://i.ibb.co/3Wxb9x5/donacle-1.jpg" alt="">
+                    <a href="<%= request.getContextPath()%>"><img src="https://i.ibb.co/3Wxb9x5/donacle-1.jpg" alt=""></a>
                 </div>
                 <div id="right-menu">
                     <div id="sub-menu">

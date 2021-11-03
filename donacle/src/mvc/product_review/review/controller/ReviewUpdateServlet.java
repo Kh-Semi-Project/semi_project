@@ -53,12 +53,11 @@ public class ReviewUpdateServlet extends HttpServlet {
 		}
 		
 		if(multipartRequest.getFile("upFile") != null && originalFilename != null && renamedFilename != null) {
+			attachService.deleteAttach(review.getReviewNo());
 			Attach attach = new Attach();
 			attach.setOriginalFilename(originalFilename);
 			attach.setRenamedFilename(renamedFilename);
 			attach.setReviewNo(review.getReviewNo());
-			int attachNo = Integer.parseInt(multipartRequest.getParameter("attachNo"));
-			attach.setAttachNo(attachNo);
 			review.setAttach(attach);
 		}
 		
