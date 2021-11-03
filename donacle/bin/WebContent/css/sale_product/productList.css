@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/* 메뉴관련스타일 */
+header nav {background:#5283de; width:100%; margin-top:40px;}
+/* ul태그의 가운데정렬 */
+ul.main-nav{
+	display:table;
+	padding:0px;
+	margin:auto;
+}
+ul.main-nav li { 
+	list-style-type: none; 
+	width: 8em; 
+	height: 2em;
+	float: left; 
+	text-align: center; 
+	font-family: "휴먼모음T", sans-serif; 
+	border-left: 1px black solid;
+	background-color: #c0c0c0; 
+	/* 메뉴밑줄트랜지션용 */
+	position:relative;	
+}
+ul.access-sub {display : none;}
+ul.main-nav li:first-of-type{border-left:1px #c0c0c0 solid;}
+ul.access-sub li{border-left:1px #c0c0c0 solid;}
+ul.main-nav li a {
+    /*a태그의 display기본값은 inline임*/
+    /* inline요소의 padding, margin은 제대로 동작하지 않음.(컨텐츠의 시각요소기준으로 제멋대로임	) */
+	display: block;
+	padding:.4em;
+	text-decoration: none;
+	color: #292929;
+}
+/* hover시 배경색 변경 */
+ul.main-nav li:hover{
+	background-color: #808080;
+}
+ul.main-nav li:hover > a{
+	color:#FFF; /* 글자색*/
+}
+/* 메뉴밑줄효과 */
+ul.main-nav li span.animate_line{
+	position: absolute;
+	/* position:absolute;=> display:block;으로 되면서, 너비, 높이를 가진다. */
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: #FCE72E;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+ul.main-nav li:hover span.animate_line{
+	width:100%;
+}
