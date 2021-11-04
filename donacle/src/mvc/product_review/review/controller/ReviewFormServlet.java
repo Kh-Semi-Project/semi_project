@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mvc.login_join_and_management.model.vo.Member;
 import mvc.product_review.review.model.service.ReviewService;
 import mvc.product_review.review.model.vo.BuyLog;
 
@@ -22,10 +23,13 @@ public class ReviewFormServlet extends HttpServlet {
 	private ReviewService reviewService = new ReviewService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//String id = ((Member)request.getSession().getAttribute("loginMember")).getId()
+		Member loginMember = ((Member)request.getSession().getAttribute("loginMember"));
+		String loginId = null;
+		if(loginMember != null) loginId = loginMember.getId();
 		String id = "test0"; //세션 정보 알아내서 수정하기!
+		System.out.println("테스트"+loginMember);
 		
-		List<BuyLog> list = reviewService.selectBuyLog(id);
+		List<BuyLog> list = reviewService.selectBuyLog(loginId);
 		System.out.println("리뷰 데이터"+list);
 		if(list != null && list.size() > 0) {
 			request.setAttribute("buyLogList", list);

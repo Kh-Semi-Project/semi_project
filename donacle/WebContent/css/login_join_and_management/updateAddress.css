@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@import 'updateMember.css';
+
+input#zipCode{
+	width:35%;
+}
+input#findAddr{
+	width:30%;
+	height:40px;
+}
+input#detailAddress{
+	width:50%;
+}
+input#subAddress{
+	width:28%;
+}

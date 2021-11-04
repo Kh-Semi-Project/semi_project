@@ -5,12 +5,22 @@
     pageEncoding="UTF-8"%>
 
 <%
+	Member id = (Member) session.getAttribute("loginMember");
+	String loginId = "";
+	if(id != null &&  id.getId() != null ) loginId = id.getId(); 
+	
 	List<Review> list = (List<Review>) request.getAttribute("reviewList");
 %>
 
 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/product_review/reviewList.css" />
-
+<script>
+	var loginUser = "<%=loginId%>";
+	if(loginUser == ""){
+	alert("로그인 후 이용 가능합니다.");
+	location.href="/donacle/memberLogin";
+}
+</script>
 <div class="subVeiew">
 	<div style="background:#F9F4F4; text-align:center; width: 1300px; height:180px; padding-top:50px; margin:auto;">
      	<h1 class="subVeiewTitle">제 품 후 기</h1>
@@ -44,7 +54,7 @@
 					<%}%>
 					<div class="review-content-content" style="margin-top: 15px; font-size: 16px;"><%= review.getReviewContent() %></div>
 					<div class="review-content-btn">
-					<%if(review.getId() != null && review.getId().equals("test0")){%>  <!-- 이 부분 세션 물어봐서 다시 적용할것  -->
+					<%if(review.getId() != null && review.getId().equals(loginId));{%>  <!-- 이 부분 세션 물어봐서 다시 적용할것  -->
 						<button class="btn-red" onclick="javascript:location.href='<%=request.getContextPath()%>/review/reviewDelete?reviewNo=<%=review.getReviewNo()%>'">삭제</button>
 						<button class="btn-mint" onclick="javascript:location.href='<%=request.getContextPath()%>/review/reviewUpdate?reviewNo=<%=review.getReviewNo()%>'">수정</button>
 					<%}%>	
@@ -74,7 +84,7 @@
 									<div class="comment-footer">
 										<span class="cmt-nm"><%=comment.getName() == null ? "비회원" : comment.getName()%></span> 
 										<span class="cmt-dt"><%=comment.getCommentsDate().substring(0, 10)%></span>
-										<%if(comment.getId() != null && comment.getId().equals("test0")){%>
+										<%if(comment.getId() != null && comment.getId().equals(loginId)){%> <!--  세션정보 수정하기 -->
 										<span class="cmt-up" onclick="cmtUpdate(this, <%=comment.getCommentsNo()%>)">수정</span>
 										<span class="cmt-del" onclick="cmtDelete(this, <%=comment.getCommentsNo()%> , <%=comment.getCommentsType()%>)">삭제</span>
 										<%}%>
@@ -104,8 +114,10 @@
 </section>
 <%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 
-<script>
 
+
+
+<script>
 
 	function reviewToggle(obj){
 		$(obj).parent("div").siblings("div.review-content").slideToggle();
@@ -198,8 +210,8 @@
 	}
 	
 	function renderingComment(res,pCommentNo){
-		var loginUser = "<%=request.getAttribute("login")%>"; 
-		loginUser = "test0"; // 위 아래 변수명 수정하기
+		
+		//loginUser = "test0"; // 위 아래 변수명 수정하기
 		
 		var str =  '<div class="comment-box">'
 					+'<input type="hidden" name="commentsNo" value="'+res.commentsNo+'"/>'
