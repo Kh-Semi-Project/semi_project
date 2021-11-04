@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 
+import com.oreilly.servlet.MultipartRequest;
+
 import mvc.product_review.common.FileUploadPath;
+import mvc.product_review.common.MvcFileRenamePolicy;
 import mvc.product_review.common.model.service.AttachService;
 import mvc.product_review.common.vo.Attach;
 
@@ -30,7 +34,9 @@ public class ImgLoadServlet extends HttpServlet {
 		int attachNo = Integer.parseInt(request.getParameter("attachNo"));
 		Attach attach = attachService.selectAttach(attachNo);
 		response.setContentType("image/jpeg");
-		byte[] image = IOUtils.toByteArray(new FileInputStream(new File(FileUploadPath.FILE_SAVE_PATH+"/"+attach.getRenamedFilename())));
+		ServletContext application = getServletContext();
+		String saveDirectory = application.getRealPath("/upload");
+		byte[] image = IOUtils.toByteArray(new FileInputStream(new File ( saveDirectory + "/"+attach.getRenamedFilename())));
 		response.getOutputStream().write(image);
 	}
 }	
