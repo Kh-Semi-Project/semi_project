@@ -2,15 +2,15 @@
 @import 'updateMember.css';
 
 input#zipCode{
-	width:60%;
+	width:35%;
 }
 input#findAddr{
-	width:35%;
+	width:30%;
 	height:40px;
 }
 input#detailAddress{
-	width:68%;
+	width:50%;
 }
 input#subAddress{
-	width:30%;
+	width:28%;
 }

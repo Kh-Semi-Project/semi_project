@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include
-	file="/WEB-INF/views/login_join_and_management/common/header.jsp"%>
+	file="/WEB-INF/views/homepage_introduce/header.jsp"%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/login_join_and_management/findIdView.css">
 <div class="container">
@@ -11,11 +11,12 @@
 				<%
 				if (!"".equals(result)) {
 				%>
-				<p>회원님의 아이디는 [<span><%=result%></span>] 입니다.</p>
+				<p>회원님의 아이디는 [ <span class = "idView"><%=result%></span> ] 입니다.</p>
 				<div class="findIdNav">
 				<nav class="nav">
 					<a href="<%=request.getContextPath()%>/memberLogin">로그인</a> | 
-					<a href="<%=request.getContextPath()%>/findPassword">비밀번호 찾기</a>
+					<a href="<%=request.getContextPath()%>/findPassword">비밀번호 찾기</a> | 
+					<a href="<%=request.getContextPath()%>/">처음 화면으로</a>
 				</nav>
 				</div>
 				

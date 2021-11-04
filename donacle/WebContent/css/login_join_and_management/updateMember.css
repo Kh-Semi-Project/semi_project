@@ -1,7 +1,6 @@
 @charset "UTF-8";
 * {
   margin: 0;
-  box-sizing: border-box;
 }
 
 
@@ -13,9 +12,9 @@
 }
 
 .updateForm {
-	margin-top:50px;
-	margin-bottom:50px;
-  width: 500px;
+  margin-top:190px;
+  margin-bottom:50px;
+  width: 525px;
   border-radius: 30px;
   display: flex;
   justify-content: center;
@@ -45,8 +44,9 @@ h2 {
   outline: none;
 }
 
+
 select#gender, select#kind{
-	width:100%;
+	width: 111%;
 	height:30px;
 	margin-top:10px;
 	text-align:center;

@@ -31,6 +31,7 @@ $(document).ready(function() {
 			$('.address').show();
 		} else {
 			$('.address').hide();
+			$('#addressMsg').hide();
 		}
 	});
 
@@ -137,7 +138,7 @@ $(document).ready(function() {
 
 			if ($('#kind').val() === 'C') {
 				if (detailAddress == '') {
-					$('#addressMsg').text("상세주소를 입력하세요.").css("color", "red").focus();
+					$('#addressMsg').text("구매자이실 경우, 배송지 주소는 필수입력값입니다.").css("color", "red").focus();
 					return false;
 				} else {
 					$('#addressMsg').hide();

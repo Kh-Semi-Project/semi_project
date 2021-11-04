@@ -40,7 +40,7 @@ public class MemberJoinServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String password = MvcUtils.getEncryptedPassword(request.getParameter("password"));
 		String name = request.getParameter("name");
-		String email = request.getParameter("email");
+		String email = request.getParameter("emailId");
 		String gender = request.getParameter("gender");
 		String _birthday = request.getParameter("birthday");
 		String kind = request.getParameter("kind") ;
