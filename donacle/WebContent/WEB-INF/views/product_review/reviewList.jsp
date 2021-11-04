@@ -14,7 +14,13 @@
 
 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/product_review/reviewList.css" />
-
+<script>
+	var loginUser = "<%=loginId%>";
+	if(loginUser == ""){
+	alert("로그인 후 이용 가능합니다.");
+	location.href="/donacle/memberLogin";
+}
+</script>
 <div class="subVeiew">
 	<div style="background:#F9F4F4; text-align:center; width: 1300px; height:180px; padding-top:50px; margin:auto;">
      	<h1 class="subVeiewTitle">제 품 후 기</h1>
@@ -108,15 +114,10 @@
 </section>
 <%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 
+
+
+
 <script>
-
-var loginUser = "<%=loginId%>";
-if(loginUser == ""){
-	alert("로그인 후 이용 가능합니다.");
-	location.href="/donacle/memberLogin";
-}
-
-
 
 	function reviewToggle(obj){
 		$(obj).parent("div").siblings("div.review-content").slideToggle();
