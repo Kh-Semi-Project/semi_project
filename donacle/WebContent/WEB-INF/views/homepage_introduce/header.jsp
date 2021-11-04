@@ -55,7 +55,7 @@
                     </div>
                     <div id="category">
                         <li>PRODUCT</li>
-                        <li>REVIEW</li>
+                        <li><a href="<%= request.getContextPath() %>/review/reviewList">REVIEW</a></li>
                         <li>DONATION</li>
                     </div>
                 </div>
