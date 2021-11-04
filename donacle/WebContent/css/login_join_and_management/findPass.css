@@ -1,7 +1,6 @@
 @charset "UTF-8";
 * {
   margin: 0;
-  box-sizing: border-box;
 }
 
 .container {
@@ -46,10 +45,19 @@ p {
   border: 1px solid lightgray;
   outline: none;
 }
+#findPassSendEmail{
+	width : 111%;	
+}
+
+#findPassSendKey {
+	width:111%
+}
 #findPassEmailMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
     text-align: center;
+    
 }
 .submit {
   margin-top: 40px;

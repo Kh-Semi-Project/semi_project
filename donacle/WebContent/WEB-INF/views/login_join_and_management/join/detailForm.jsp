@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file = "/WEB-INF/views/login_join_and_management/common/header.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/header.jsp" %>
 	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/login_join_and_management/memberDetail.css">
 <div class="container">
@@ -50,7 +50,7 @@
 				<td colspan ="2">
 				<input type="button" class = "Btn" value="수정" onclick = "location.href='<%=request.getContextPath()%>/member/memberUpdate'" />
 				<input type="button" class = "Btn" value="탈퇴" onclick = "deleteMember();" />
-				<input type="button" class = "Btn"value="돌아가기" onclick = "location.href='<%=request.getContextPath()%>/'">
+				<input type="button" class = "Btn"value="돌아가기" onclick = "location.href='<%=request.getContextPath()%>/member/myPage'">
 				</td>
 				
 				

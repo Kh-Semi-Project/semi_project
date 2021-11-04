@@ -1,7 +1,9 @@
+<%@page import="mvc.login_join_and_management.model.service.MemberService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file = "/WEB-INF/views/login_join_and_management/common/header.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login_join_and_management/join.css">
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<form name="memberJoinFrm" action="<%= request.getContextPath() %>/memberJoin" method="POST">
 	<div class="container">
@@ -30,9 +32,7 @@
 			<div class = "content">
 			<h4>이메일</h4>
 					<input type="text" placeholder = "이메일" name="emailId" id="email" class = "email">
-       				<input type="button" value="인증번호 발송" id="sendEmail"  />
-       			</div>
-   			 <div class="content">  			
+       				<input type="button" value="인증번호 발송" id="sendEmail"  />	
 					<input type="password" placeholder = "인증번호를 입력해주세요." id="writeKey" style = "display:none;" />
 					<input type="button" value="인증하기" id="sendKey" name="sendKey" style = "display:none;"/><br />
 			</div>
@@ -59,7 +59,7 @@
 				
 			<div class = "content" >
 			<div class = "address">
-			<h4>주소</h4>
+			<h4>배송지 주소</h4>
 					<input type="text" placeholder="우편번호" name="zipCode" id="zipCode" readonly>
 					<input type="button" id = "findAddr" value="우편번호 찾기" onclick ="findAddress();"/>
 					<input type="text" placeholder="주소" name="address" id="myAddress" readonly>

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file = "/WEB-INF/views/login_join_and_management/common/header.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/header.jsp" %>
 	<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/login_join_and_management/updateMember.css">
 	<form name="memberUpdateFrm" action="<%= request.getContextPath() %>/member/memberUpdate" method="POST">
 	<div class="container">
 		<div class="updateForm">
-		<h2>내 정보 수정</h2>
+		<h2>회원 정보 수정</h2>
 			<div class="content">
 			<h4>아이디</h4>
 				<input type="text" placeholder="아이디" name="id" id="id" value = "<%= loginMember.getId()%>" readonly>

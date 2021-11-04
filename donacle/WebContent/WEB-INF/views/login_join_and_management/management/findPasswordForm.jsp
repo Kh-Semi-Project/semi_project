@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include
-	file="/WEB-INF/views/login_join_and_management/common/header.jsp"%>
+	file="/WEB-INF/views/homepage_introduce/header.jsp"%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/login_join_and_management/findPass.css">
 <form name="findPasswordFrm"  action="<%=request.getContextPath()%>/findPassword" method="post">
@@ -10,7 +10,7 @@
 			<h2>비밀번호 찾기</h2>
 			<p>아이디와 이메일을 입력해주세요.</p>
 			<div class="content">
-				<h4>이름</h4>
+				<h4>아이디</h4>
 				<input type="text" id="id" name="id" placeholder="아이디" />
 			</div>
 			<div class="content">

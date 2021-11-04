@@ -1,7 +1,6 @@
 @charset "UTF-8";
 * {
   margin: 0;
-  box-sizing: border-box;
 }
 
 .container {
@@ -34,9 +33,9 @@ th, td {
 	
 }
 th {
-	width : 30%;
-	background-color:lightgray;
-	border-radius:30px;
+	width : 20%;
+	background-color:beige;
+	border-radius:40px;
 }
 
 td {

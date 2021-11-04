@@ -59,6 +59,14 @@ public class AdminMemberUpdateServlet extends HttpServlet {
 		String _birthday = request.getParameter("birthday");
 		String kind = request.getParameter("kind");
 		
+		if("구매자".equals(kind)) {
+			kind = MemberService.MEMBER_KIND_CUSTOMER;
+		} else if ("판매자".equals(kind)) {
+			kind = MemberService.MEMBER_KIND_SELLER;
+		} else {
+			kind = MemberService.MEMBER_KIND_ADMIN;
+		}
+		
 		Date birthday = null;
 		if(_birthday != null && !"".equals(_birthday)) {
 			SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyyMMdd");
@@ -89,6 +97,8 @@ public class AdminMemberUpdateServlet extends HttpServlet {
 			member.setAddress(addr);
 		}
 		
+		System.out.println(member);
+		
 		
 		int result = memberService.updateMember(member);
 		
@@ -97,6 +107,7 @@ public class AdminMemberUpdateServlet extends HttpServlet {
 		if(result > 0) {
 			msg = "성공적으로 회원님의 정보를 수정했습니다.";
 			Member newMember = memberService.selectOneMember(id);
+			System.out.println(newMember);
 			
 			session.setAttribute("memberById", newMember);
 			session.setAttribute("msg", msg);

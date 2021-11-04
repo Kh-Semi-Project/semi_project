@@ -1,7 +1,6 @@
 @charset "UTF-8";
 * {
   margin: 0;
-  box-sizing: border-box;
 }
 
 .container {
@@ -47,12 +46,14 @@ p {
   outline: none;
 }
 #newPassMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
 }
 #checkNewPassMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
 }
 .submit {
   margin-top: 40px;

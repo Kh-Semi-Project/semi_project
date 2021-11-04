@@ -1,7 +1,6 @@
 @charset "UTF-8";
 * {
   margin: 0;
-  box-sizing: border-box;
 }
 
 
@@ -13,7 +12,7 @@
 }
 
 .joinForm {
-	margin-top:50px;
+	margin-top:190px;
 	margin-bottom:50px;
   width: 500px;
   border-radius: 30px;
@@ -34,6 +33,7 @@ h2 {
   width: 80%;
 }
 
+
 .content#btnContent{
 	text-align:center;
 }
@@ -43,79 +43,80 @@ h2 {
   width: 100%;
   height: 50px;
   border-radius: 30px;
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 0px 20px;
   border: 1px solid lightgray;
   outline: none;
 }
 
-input#emailId{
-	  width: 35%;
-}
-input#emailAddress{
-	  width: 35%;
-}
-select#mailSelect{
-	width: 20%;
- 	height: 25px; 
- 	text-align:center;
-	border-radius:30px;
+#sendEmail {
+	width:111%;
 }
 
+#sendKey {
+	width: 111%;
+}
 select#gender, select#kind{
-	width:100%;
-	height:30px;
+	width:111%;
+	height:35px;
 	margin-top:10px;
 	text-align:center;
 	border-radius:30px;
 }
 
 input#zipCode{
-	width:60%;
+	width:40%;
 }
 input#findAddr{
-	width:35%;
+	width:30%;
 	height:40px;
 }
 input#detailAddress{
-	width:68%;
+	width:55%;
 }
 input#subAddress{
-	width:30%;
+	width:22%;
 }
 #idMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
 }
 #passMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;;
 }
 
 #checkPassMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
 }
 
 
 #nameMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
 }
 
 #emailMsg{
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
 }
 #birthdayMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
 }
 
 #addressMsg{
-	margin-top: 20px;
+	margin-top: 10px;
     font-size: 15px;
+    font-weight:bold;
 }
-
 
 .signupBtn, .cancelBtn {
   background:black;

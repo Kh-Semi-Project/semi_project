@@ -1,7 +1,6 @@
 @charset "UTF-8";
 * {
   margin: 0;
-  box-sizing: border-box;
 }
 .container {
   width: 100%;
@@ -26,19 +25,21 @@
 h2 {
   color: black;
   font-size: 40px;
-  margin-bottom:30px;
+  margin-bottom:50px;
 }
 p {
 	 color: black;
 	 font-size:25px;
-	 font-weight:bold;
-	 margin-top: 25px;
-    margin-bottom: 25px;
+	 margin-top: 40px;
+    margin-bottom: 40px;
 	 
 }
 
-span {
-	color:red;
+span.idView {
+	font-size:30px;
+	color:black;
+	font-weight:bold;
+	text-decoration:underline;
 }
 
 a {
