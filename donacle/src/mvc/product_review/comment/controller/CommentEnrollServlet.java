@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-
+import mvc.login_join_and_management.model.vo.Member;
 import mvc.product_review.comment.model.service.CommentService;
 import mvc.product_review.comment.model.vo.Comment;
 
@@ -27,15 +27,17 @@ public class CommentEnrollServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String id = request.getParameter("id");
-		id = "test0";
+		//String id = ((Member) request.getSession().getAttribute("loginMember") ).getId("loginMember");
+		Member loginMember = ((Member)request.getSession().getAttribute("loginMember"));
+		String loginId = null;
+		if(loginMember != null) loginId = loginMember.getId();
 
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		String commentsType = request.getParameter("commentsType");
 		String commentsTitle = request.getParameter("commentsTitle");
 		int pCommentsNo = Integer.parseInt(request.getParameter("pCommentsNo"));
 		
-		Comment comment = new Comment(reviewNo,id,commentsType,commentsTitle,pCommentsNo);
+		Comment comment = new Comment(reviewNo,loginId,commentsType,commentsTitle,pCommentsNo);
 		int commentsNo = commentService.insertComment(comment);
 		comment = commentService.selectComment(commentsNo);
 		comment.setCommentsNo(commentsNo);
