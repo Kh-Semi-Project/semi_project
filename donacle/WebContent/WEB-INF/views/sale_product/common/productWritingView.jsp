@@ -122,10 +122,12 @@
 				<input type="hidden" name = "product_shipping_fee" id = "product_shipping_fee" value="<%= pw.getShipping_fee()%>"/>
 				<input type="hidden" name = "sum_price" id = "sum_price" value ="<%= pw.getProduct_price()%>"/>
 				<table class="productwritingview">
+<%if("C".equals(member.getKind())){%>
 					<tr>
 						<td><input name = "cart" class="productwritingviewBtn hovercolor" type="button" value="장바구니"/></td>
 						<td><input name = "buy" class="productwritingviewBtn hovercolor" type="submit" value="구매하기"/></td>
 					</tr>
+<%} %>
 					<tr>
 						<td colspan="2"><input name = "comment" class="productwritingviewBtn hovercolor" type="button" value="문의▼"/></td>
 					</tr>
@@ -231,6 +233,7 @@ if(pwqlist != null && !pwqlist.isEmpty()){
 			</table>
 		</div>
 	</section>
+	<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 	<script>
 	
 	//- 누를때마다 -1씩 추가

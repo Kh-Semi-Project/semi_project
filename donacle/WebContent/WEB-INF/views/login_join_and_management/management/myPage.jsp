@@ -59,6 +59,9 @@
 								<p class = "info">판매자 회원님께서 올리신 <br>제품 주문 내역과 제품을 관리합니다.</p>
 								<input type="button" class = "btn" value="주문 확인" onclick = "location.href='<%=request.getContextPath()%>/sale_product/productOrderList?id=<%=loginMember.getId()%>'"/>
 								<input type="button" class = "btn" value="제품 목록" onclick = "location.href='<%=request.getContextPath()%>/sale_product/productList?id=<%=loginMember.getId()%>'"/>
+								<br/>
+								<input type="button" class = "btn" value="제품추가" onclick="location.href='<%= request.getContextPath() %>/sale_product/productAddpage';" style="margin-top:6px;">
+	
 							
 							<!-- 관리자 -->
 							<!-- 승인요청 리스트 확인 -->

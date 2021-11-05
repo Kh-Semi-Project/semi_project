@@ -10,6 +10,7 @@ import java.util.List;
 
 
 import mvc.sale_product.product.model.dao.ProductDao;
+import mvc.login_join_and_management.model.vo.Address;
 import mvc.sale_product.product.model.vo.Product;
 import mvc.sale_product.product.model.vo.ProductBuy;
 import mvc.sale_product.product.model.vo.ProductWriting;
@@ -153,6 +154,7 @@ public class ProductService {
 		return result;
 	}
 
+	//제품 주문 리스트
 	public List<ProductBuy> productOrderList(String id) {
 		Connection conn = getConnection();
 		List<ProductBuy> productBuyList = pwdao.selectProductOrderList(conn, id);
@@ -160,6 +162,7 @@ public class ProductService {
 		return productBuyList;
 	}
 
+	//제품 판매 글 추가
 	public int ProductWritingAdd(int product_code, String id) {
 		Connection conn = getConnection();
 		int result = pwdao.insertproductWriting(conn, product_code,id);
@@ -179,6 +182,7 @@ public class ProductService {
 		return result;
 	}
 
+	//수령/배송되지 않은 제품있는지 확인
 	public int selectProductynList(String[] codes) {
 		Connection conn = getConnection();
 		int pw = pwdao.selectProductynList(conn, codes);
@@ -188,14 +192,14 @@ public class ProductService {
 			return ProductDelete(codes);
 		}
 	}
-
+	//관리자 승인 요청 글 select
 	public List<ProductWriting> productWritingAdminCheckList() {
 		Connection conn = getConnection();
 		List<ProductWriting> productBuyList = pwdao.selectProductWritingAdminCheckList(conn);
 		close(conn);
 		return productBuyList;
 	}
-
+	//관리자 승인 체크 리스트
 	public int updateProductWritingAdminCheck(int product_writing_code) {
 		Connection conn = getConnection();
 		int result = pwdao.updateProductAdminCheck(conn, product_writing_code);
@@ -205,6 +209,7 @@ public class ProductService {
 		return result;
 	}
 
+	//후원 추가
 	public int insertDonate(int product_donate_price, String id) {
 		Connection conn = getConnection();
 		int result = pwdao.insertDonate(conn, product_donate_price, id);
@@ -214,7 +219,7 @@ public class ProductService {
 		return result;
 	}
 
-
+	//문의 댓글 추가
 	public int InsertProductComment(ProductWritingQuestion pwq) {
 		Connection conn = getConnection();
 		int result = pwdao.InsertProductComment(conn, pwq);
@@ -223,7 +228,7 @@ public class ProductService {
 		close(conn);
 		return result;
 	}
-
+	//문의 댓글 삭제
 	public int DeleteProductComment(int product_question_code) {
 		Connection conn = getConnection();
 		int result = pwdao.DeleteProductComment(conn, product_question_code);
@@ -232,11 +237,19 @@ public class ProductService {
 		close(conn);
 		return result;
 	}
-
+	//조회수 많은 3개의 판매제품글
 	public List<ProductWriting> selectProductWritingTop3List(int category) {
 		Connection conn = getConnection();
 		List<ProductWriting> list = pwdao.selectProductWritingTop3List(conn, category);
 		close(conn);
 		return list;
+	}
+
+	//사용자 주소 가져오기
+	public Address MemberAddress(String cos_id) {
+		Connection conn = getConnection();
+		Address address = pwdao.MemberAddress(conn, cos_id);
+		close(conn);
+		return address;
 	}
 }

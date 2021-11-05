@@ -90,10 +90,11 @@ if(pb.getProduct_shipping_status().equals("n") && pb.getProduct_receipt_yn().equ
 			<td colspan="9"><input type="button" name = "productOrderCancelBtn" value="주문취소"/></td>
 		</tr>
 <%} %>
-<% if(pblist == null){%>
-	
+<% if(pblist == null|| pblist.isEmpty()){%>
+	<tr><td colspan="9"><img src="<%= request.getContextPath() %>/css/sale_product/buy.png" alt="" width="400px;"/></td></tr>
 <%}%>
 	</table>
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 </section>
 <script>
 
@@ -125,21 +126,26 @@ if(pb.getProduct_shipping_status().equals("n") && pb.getProduct_receipt_yn().equ
 		//선택된 제품이 있다면 json으로 데이터 전달
 		//한개의 데이터가 아닌 여러개의 데이터 한번에 삭제 가능
 		}else{
+			var msgs = "";
 			if(confirm("정말로 제품 주문을 취소하겠습니까?") == true){
 				var a = JSON.stringify(checkboxCode);
 				//alert("ajax 데이터 전달전"+checkboxCode + ", " + a);
 				$.ajax({
 					url : "<%= request.getContextPath() %>/sale_product/productBuyDelete",
 					type : "post",
+					dataType : "json",
 					data : {codes : a},
 					success(data){
-						console.log(data);
-						alert(data);
-						location.reload();
+						msgs += data
+						console.log(data)
 					},
 					error : console.log
 				});
 			}
+			setTimeout(function() {
+				alert(msgs);
+				location.reload();
+			}, 2000);
 		}
 	});
 	/* 

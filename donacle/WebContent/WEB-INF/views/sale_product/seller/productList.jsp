@@ -84,10 +84,14 @@ index++;
 			</td>
 		</tr>
 <%}%>
+<%if(productList.isEmpty()){ %>
+<tr><td colspan ="11"><img src="<%= request.getContextPath() %>/css/sale_product/productlist.png" alt="" width="500px;"/></td></tr>
+<%} %>
 		<tr><!-- 삭제 버튼 만들기 -->
 			<td colspan="11"><input type="button" name = "productdeleteBtn" value="제품 삭제"/></td>
 		</tr>
 	</table>
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 </section>
 <script>
 
@@ -147,6 +151,7 @@ index++;
 		//선택된 제품이 있다면 json으로 데이터 전달
 		//한개의 데이터가 아닌 여러개의 데이터 한번에 삭제 가능
 		}else{
+			var msgs = "";
 			if(confirm("정말로 제품을 삭제하겠습니까?") == true){
 				var a = JSON.stringify(checkboxCode);
 				//alert("ajax 데이터 전달전"+checkboxCode + ", " + a);
@@ -156,13 +161,16 @@ index++;
 					dataType : "json",
 					data : {codes : a},
 					success(data){
+						msgs += data
 						console.log(data)
-						alert(data);
-						location.reload();
 					},
 					error : console.log
 				});
 			}
+		setTimeout(function() {
+				alert(msgs);
+				location.reload();
+		}, 2000);
 		}
 	});
 </script>

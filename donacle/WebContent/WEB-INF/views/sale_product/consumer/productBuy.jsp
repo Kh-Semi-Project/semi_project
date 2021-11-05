@@ -1,3 +1,4 @@
+<%@page import="mvc.login_join_and_management.model.vo.Address"%>
 <%@page import="mvc.login_join_and_management.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -9,6 +10,7 @@
 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <%@ include file="/WEB-INF/views/sale_product/common/productListMenu.jsp" %>
 <%
+	Address address = (Address) request.getAttribute("address");
 	ProductBuy pb = (ProductBuy) request.getAttribute("ProductBuyInfo");
 	Member member = (Member) session.getAttribute("loginMember");	
 	
@@ -83,6 +85,7 @@
 		<input type = "hidden" name = "price_sum" value = "<%= pb.getPrice_sum()%>">
 
 	</form>
+	<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 	</section>
 <script>
 //order
@@ -95,11 +98,11 @@ $("[name=orderBtn]").on('click',function(){
         merchant_uid : 'merchant_' + new Date().getTime(),
         name : '<%=pb.getProduct_name() %>결제',
         amount : <%=pb.getProduct_buy_count()%>,
-        buyer_email : '구매자 이메일',
-        buyer_name : '구매자 이름',
+        buyer_email : '<%=member.getEmail()%>',
+        buyer_name : '<%=member.getName()%>',
         buyer_tel : '01062860083',
-        buyer_addr : '서울특별시 강남구',
-        buyer_postcode : '2058',
+        buyer_addr : '<%=address.getAddress() + address.getDetailAddress()%>',
+        buyer_postcode : '<%=address.getZipCode()%>',
     }, function(rsp) {
         if ( rsp.success ) {
             var msg = '결제가 완료되었습니다.';

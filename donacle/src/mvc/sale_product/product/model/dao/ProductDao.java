@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import mvc.login_join_and_management.model.vo.Address;
 import mvc.sale_product.product.model.vo.Product;
 import mvc.sale_product.product.model.vo.ProductBuy;
 import mvc.sale_product.product.model.vo.ProductWriting;
@@ -238,6 +239,7 @@ public class ProductDao {
 		return result;
 	}
 
+	//구매 제품 정보 가져오기
 	public ProductBuy selectproductBuyInfo(Connection conn, ProductBuy pb) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -322,6 +324,7 @@ public class ProductDao {
 		return result;
 	}
 
+	//주문했던 제품 삭제
 	public int deleteProductBuy(Connection conn, String[] codes) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteproductBuy");
@@ -461,6 +464,7 @@ public class ProductDao {
 		return result;
 	}
 
+	//관리자 승인 여부 업데이트
 	public int updateProductAdmin(Connection conn, Product p) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateProductAdmin");
@@ -479,6 +483,7 @@ public class ProductDao {
 		return result;
 	}
 
+	//배송 상태 변경
 	public int updateProductShappingStatus(Connection conn, int product_buy_code) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateProductShappingStatus");
@@ -497,6 +502,7 @@ public class ProductDao {
 		return result;
 	}
 
+	//주문 리스트 출력
 	public List<ProductBuy> selectProductOrderList(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -534,6 +540,7 @@ public class ProductDao {
 		return productBuyList;
 	}
 
+	//판매제품글 추가
 	public int insertproductWriting(Connection conn, int product_code, String id) {
 		PreparedStatement pstmt = null;
 //		String sql = prop.getProperty("insertproductWritingtest");	
@@ -664,6 +671,7 @@ public class ProductDao {
 		return list;
 	}
 
+	//관리자 승인 여부 수정
 	public int updateProductAdminCheck(Connection conn, int product_writing_code) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateProductAdminCheck");
@@ -729,6 +737,7 @@ public class ProductDao {
 		return result;
 	}
 
+	//문의 댓글 삭제
 	public int DeleteProductComment(Connection conn, int product_question_code) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteproductWritingComment");	
@@ -747,6 +756,7 @@ public class ProductDao {
 		return result;
 	}
 
+	//조회수 top3 판매제품글 가져오기
 	public List<ProductWriting> selectProductWritingTop3List(Connection conn, int category) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -791,5 +801,30 @@ public class ProductDao {
 			close(pstmt);
 		}
 		return list;
+	}
+
+	public Address MemberAddress(Connection conn, String cos_id) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("MemberAddress");
+		Address address = new Address();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cos_id);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				address.setAddress(rset.getString("ADDRESS"));
+				address.setDetailAddress(rset.getString("DETAIL_ADDRESS"));
+				address.setZipCode("ZIP_CODE");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return address;
 	}
 }

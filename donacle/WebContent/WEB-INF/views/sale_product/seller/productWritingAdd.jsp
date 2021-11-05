@@ -10,7 +10,7 @@
 	Member member = (Member) session.getAttribute("loginMember");
 %>
 <%if(member != null){ %>
-	<section id = "product-writing_add-container">
+	<section id = "product-writing_add-container" style="width:100%">
 	<h2>제품 판매글 추가</h2>
 	<form
 		name = "productWritingAddFrm"
@@ -148,3 +148,4 @@
 		location.href='<%=request.getContextPath()%>/memberLogin';
  </script>
  <%}%>
+ <%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>

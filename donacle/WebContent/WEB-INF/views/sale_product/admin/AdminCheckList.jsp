@@ -41,7 +41,7 @@ table tr td{
 			<!-- 전체 선택 추가하기 -->
 		</tr>
 
-<!-- 사용자가 구매했던 리스트 출력 -->
+<!-- 관리자 승인 요청 글 출력 -->
 <%
 int index = 0;
 for(ProductWriting pw : pwlist){
@@ -86,7 +86,12 @@ index++;
 				</td>
 			</tr>
 <%} %>
+<%System.out.print(pwlist == null); %>
+<%if(pwlist.size() == 0){ %>
+	<tr><td colspan="4" style="text-align:center;"><img src="<%= request.getContextPath() %>/css/sale_product/admincheck.png" alt="" width="400px;"/></td></tr>
+<%} %>
 	</table>
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 </section>
 <script>
 
