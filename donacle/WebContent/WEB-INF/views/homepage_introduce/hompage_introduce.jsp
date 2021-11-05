@@ -8,7 +8,7 @@
 %>
 <script src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<div id="layout-content">
+<div class="layout-content">
             <div id="content_menu">
                 <nav id="gnb">
                     <ul>
@@ -89,7 +89,7 @@
                 <section id="content4">
                     <div class="content4_box">
                         <div id="content4-1">
-                            <p>jeong yeon Kim</p>
+                            <p>jeong hyeon Kim</p>
                             <div id="showDetail1">
                                 - 제품 판매 MENU<br>
                                 - 상품 판매/상품 문의<br>
