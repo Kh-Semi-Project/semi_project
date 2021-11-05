@@ -29,6 +29,7 @@ $(document).ready(function() {
 		console.log(state);
 		if (state == 'C') {
 			$('.address').show();
+			$('#addressMsg').show();
 		} else {
 			$('.address').hide();
 			$('#addressMsg').hide();
@@ -55,7 +56,8 @@ $(document).ready(function() {
 				console.log(error);
 			}
 		});
-		$("#sendEmail").hide();
+		
+		$("#sendEmail").val('인증번호 재발송');
 		$("#writeKey").show();
 		$("#sendKey").show();
 
@@ -64,8 +66,8 @@ $(document).ready(function() {
 
 			if (writeKey == key) {
 				$('#emailMsg').text("성공적으로 인증되었습니다.").css("color", "green");
-				$("#emailId").attr("readonly", true);
-				$("#emailAddress").attr("readonly", true);
+				$("#email").attr("readonly", true);
+				$("#sendEmail").hide();
 				$("#writeKey").hide();
 				$('#sendKey').hide();
 				emailValid = 1;
@@ -74,6 +76,7 @@ $(document).ready(function() {
 			}
 		});
 	});
+
 
 	$('#findPassSendEmail').click(function() {
 		var email = $("#findPassEmail").val();
@@ -95,7 +98,7 @@ $(document).ready(function() {
 				console.log(error);
 			}
 		});
-		$("#findPassSendEmail").hide();
+		$("#findPassSendEmail").val('인증번호 재발송');
 		$("#findPassWriteKey").show();
 		$("#findPassSendKey").show();
 
@@ -104,6 +107,8 @@ $(document).ready(function() {
 
 			if (passWriteKey == passKey) {
 				$('#findPassEmailMsg').text("성공적으로 인증되었습니다.").css("color", "green");
+				$("#findPassEmail").attr("readonly", true);
+				$("#findPassSendEmail").hide();
 				$("#findPassWriteKey").hide();
 				$('#findPassSendKey').hide();
 				passEmailValid = 1;
@@ -225,6 +230,7 @@ function checkNewPassword() {
 	} else {
 		$('#checkNewPassMsg').text("비밀번호가 일치합니다.").css('color', 'green');
 	}
+	
 }
 
 function findAddress() {
@@ -257,7 +263,7 @@ function findAddress() {
 				}
 				// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
 				if (extraAddr !== '') {
-					extraAddr = '(' + extraAddr + ')';
+					extraAddr = ' (' + extraAddr + ')';
 				}
 				// 조합된 참고항목을 해당 필드에 넣는다.
 				document.getElementById("subAddress").value = extraAddr;
@@ -270,8 +276,9 @@ function findAddress() {
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementById('zipCode').value = data.zonecode;
 			document.getElementById('myAddress').value = addr;
-			console.log(addr);
+
 			// 커서를 상세주소 필드로 이동한다.
+			document.getElementById('detailAddress').value = '';
 			document.getElementById("detailAddress").focus();
 		}
 	}).open();
@@ -287,5 +294,4 @@ function adminMemberDelete() {
 	if (confirm("회원 정보 삭제를 진행합니다. 정말 삭제하시겠습니까?")) {
 		$(document.adminMemberDeleteFrm).submit();
 	}
-
 }

@@ -48,4 +48,4 @@
 	</div>
 	</form>
 
-<%@include file = "/WEB-INF/views/login_join_and_management/common/footer.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>

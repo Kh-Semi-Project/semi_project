@@ -34,9 +34,9 @@ public class MemberDeleteServlet extends HttpServlet {
 			session.setAttribute("msg", msg);
 			response.sendRedirect(request.getContextPath() + "/");
 		} else {
-			msg = "회원 가입에 실패했습니다. 지속적인 오류 발생 시 관리자에게 문의 바랍니다.";
+			msg = "회원 탈퇴에 실패했습니다. 지속적인 오류 발생 시 관리자에게 문의 바랍니다.";
 			session.setAttribute("msg", msg);
-			request.getRequestDispatcher(request.getContextPath() + "/member/memberUpdate");
+			request.getRequestDispatcher(request.getContextPath() + "/member/myPage");
 		}
 	}
 

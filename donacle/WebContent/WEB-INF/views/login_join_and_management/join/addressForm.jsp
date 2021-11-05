@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file = "/WEB-INF/views/homepage_introduce/header.jsp" %>
 	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/login_join_and_management/memberDetail.css">
+	href="<%=request.getContextPath()%>/css/login_join_and_management/addressDetail.css">
 <div class="container">
 	<div class="detailForm">
 	<h2>배송지 주소 관리</h2>
@@ -38,4 +38,4 @@
 <form name = "memberDeleteFrm" action="<%= request.getContextPath() %>/member/memberDelete" method = "post">
 				<input type="hidden" name="id" value ="<%=loginMember.getId() %>" />
 				</form>
-<%@include file = "/WEB-INF/views/login_join_and_management/common/footer.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>
