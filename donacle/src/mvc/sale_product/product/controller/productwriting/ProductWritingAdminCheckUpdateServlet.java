@@ -23,7 +23,7 @@ public class ProductWritingAdminCheckUpdateServlet extends HttpServlet {
 		
 		// 1. 사용자요청 값처리
 		int product_writing_code = Integer.parseInt(request.getParameter("product_writing_code"));
-		
+		System.out.println("product_writing_code@"+product_writing_code);
 		// 2. 업무로직
 		int result = ps.updateProductWritingAdminCheck(product_writing_code);
 		System.out.println(result > 0 ? "관리자 승인 변경 성공" : "관리자 승인 변경 실패");

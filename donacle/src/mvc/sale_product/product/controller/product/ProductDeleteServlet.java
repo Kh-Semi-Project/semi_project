@@ -33,9 +33,11 @@ public class ProductDeleteServlet extends HttpServlet {
 		}else {
 			msg = result_count > 0 ? "제품 삭제에 성공했습니다." : "제품 삭제에 실패했습니다.";
 		}
-		
+		Gson gson = new Gson();
+		String jsonStr = gson.toJson(msg);
+		System.out.println(jsonStr);
 		response.setContentType("application/json; charset=utf-8");
-		response.getWriter().print(msg);	
+		response.getWriter().print(jsonStr.toString());	
 		
 	}
 

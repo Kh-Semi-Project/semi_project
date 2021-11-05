@@ -28,10 +28,17 @@ public class ProductWritingAddServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // jsp에서 servlet으로 값 전달시 한글깨져서 추가
 		
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
+		System.out.println("product_code@"+product_code);
 		//session에서 가져오기 필요
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
+		if(member == null) {
+			String location = request.getContextPath() + "/";
+			
+			response.sendRedirect(location);
+		}
 		String id = member.getId(); // 아이디 가져오기 필요
+		System.out.println("id@"+id);
 		
 		// 2. 업무로직
 		int result = ps.ProductWritingAdd(product_code,id);

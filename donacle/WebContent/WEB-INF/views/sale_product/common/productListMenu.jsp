@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/common.css"/>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/productList.css" />
     <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
-	<nav style="margin-top:200px; position: fixed;  top: 0;">
+	<nav style="margin-top:200px; position: fixed;  top: 0; text-align: center; width: 100%;">
 		<ul class="main-nav">
 		<li class="home"><a href="<%= request.getContextPath() %>/sale_product/productwritingList?category=0">All</a>
 			<li class="accessories"><a>Accessories</a>

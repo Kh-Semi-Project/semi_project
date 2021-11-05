@@ -17,15 +17,16 @@
 			height : 200px;
 		}
 		#productAddT{
-			width : 60%;
+			width : 70%;
 			height : 400px;
 			margin : auto;
 		}
-		body{
-			text-align : center;
+		#pro_Counts {
+			margin-left: -10px;
 		}
 	</style>
-	<section id = "product-add-container">
+	 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
+	<section id = "product-add-container" style="margin-top:200px; text-align:center;">
 	<h2>물건 추가</h2>
 	<form
 		name = "productAddFrm"
@@ -34,7 +35,7 @@
 	>
 		<table id = "productAddT">
 			<tr>
-				<td rowspan ="6">
+				<td rowspan ="7">
 						<img id = "photo_print" src ="<%=pw.getProduct_img() %>" alt ="제품사진" onerror= "this.style.display='none'" ><br/>
 						<!-- 파일 추가-->
 						1. <input id="photo" class="file" type="file" name="mainimage" 
@@ -54,7 +55,7 @@
 			</tr>
 			<tr>
 				<th>카테고리</th>
-				<td>: <select id = "category">
+				<td>: <select id = "category" style="width:170px;">
 					<option value = "1" <%if(pw.getCategory_code() == 1){ %>selected<% }%>>목걸이</option>
 					<option value = "2" <%if(pw.getCategory_code() == 2){ %>selected<% }%>>팔찌</option>
 					<option value = "3" <%if(pw.getCategory_code() == 3){ %>selected<% }%>>뱃지</option>
@@ -228,3 +229,4 @@
 	          });
 	      };
 	 </script>
+	 <%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>

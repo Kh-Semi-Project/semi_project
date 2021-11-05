@@ -28,8 +28,11 @@ public class ProductListServlet extends HttpServlet {
 		// 1. 사용자입력 값처리
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
+		if(member == null) {
+			String location = request.getContextPath() + "/";
+			response.sendRedirect(location);
+		}
 		String id = member.getId(); // 아이디 가져오기 필요
-		
 		// 2. 업무로직
 		List<ProductWriting> pw = ps.productList(id);
 		System.out.println("ProductList@servlet@" + pw);

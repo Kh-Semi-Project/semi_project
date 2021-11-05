@@ -3,6 +3,7 @@
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/sale_product/firebaseImage.js"></script>
+
 	<style>
 		#none_block {
 			display : none;
@@ -15,12 +16,20 @@
 			height : 200px;
 		}
 		#productAddT{
-			width : 60%;
+			width : 70%;
 			height : 400px;
 			margin : auto;
 		}
 		body{
 			text-align : center;
+		}
+		input[name=Add]:hover{
+			background-color : black;
+			color : white;
+		}
+		#pro_Counts {
+			margin-left: -15px;
+			margin-top: 35px;
 		}
 	</style>
 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
@@ -28,7 +37,7 @@
 	Member member = (Member) session.getAttribute("loginMember");
 %>
 <%if(member != null){ %>
-	<section id = "product-add-container">
+	<section id = "product-add-container" style="margin-top:200px;">
 	<h2>물건 추가</h2>
 	<form
 		name = "productAddFrm"
@@ -57,7 +66,7 @@
 			</tr>
 			<tr>
 				<th>카테고리</th>
-				<td>: <select id = "category" style="width:50%;">
+				<td>: <select id = "category" style="width:170px;">
 					<option value = "1" selected>목걸이</option>
 					<option value = "2">팔찌</option>
 					<option value = "3">뱃지</option>
@@ -87,16 +96,17 @@
 					<input type="radio" name = "pro_Count" id ="pro_Count70" value ="70"><label for="pro_Count70">70개</label>
 					<input type="radio" name = "pro_Count" id ="pro_Count00" value ="직접입력"><label for="pro_Count00">직접입력</label>
 				</td>
-				<td id = "none_block">
+				<td id = "none_block" style="margin:auto;">
 					<input type="text" name = "pro_Counts" id ="pro_Counts" value ="10" onkeyup="$(this).val($(this).val().replace(/\D/g,''));">개
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align:center;"><input name = "Add" type="submit" value="추가하기"/></td>
+				<td colspan="3" style="text-align:center;"><input name = "Add" type="submit" value="추가하기"/></td>
 			</tr>
 		</table>
 		<input type = "hidden" name="img_url" style="display:none;"/>
 	</form>
+	<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 	</section>
 	<script>
 		//직접 입력할 수 있게 하는 부분 만들기
@@ -152,8 +162,8 @@
 		}
 	</script>
 <%}else{%>
- <script>
- 		alert('로그인 후 이용 가능합니다.');
-		location.href='<%=request.getContextPath()%>/memberLogin';
- </script>
+<script>
+	alert('로그인 후 이용 가능합니다.');
+	location.href='<%=request.getContextPath()%>/memberLogin';
+</script>
 <%} %>

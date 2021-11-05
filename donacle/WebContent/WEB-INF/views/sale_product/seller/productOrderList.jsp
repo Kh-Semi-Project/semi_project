@@ -62,12 +62,16 @@ index++;
 			<td><%=pb.getProduct_buy_count()%>개</td>
 		</tr>
 <%}%>
+<%if(pbs.isEmpty()){ %>
+<tr><td colspan ="9"><img src="<%= request.getContextPath() %>/css/sale_product/orderlist.png" alt="" width="500px;"/></td></tr>
+<%} %>
 	</table>
 	
 	
 	
 		<!-- 판매자가 배송을 시작했으면 버튼을 통해 클릭시 서버에 (판매자는 물건을 출발시켰다는) 정보를 전달,
 			 사용자가 주문확인 페이지에서 확인 가능하게 하기 위함 -->
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 </section>
 <script>
 	/* 

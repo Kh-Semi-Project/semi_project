@@ -40,11 +40,14 @@
                         <ul><span onclick = "location.href='<%=request.getContextPath()%>/admin/memberList'"><img src="https://i.ibb.co/THQ11bq/user.png">회원관리</span></ul>
                         <ul><span onclick = "location.href='<%=request.getContextPath()%>/sale_product/productWritingAdminCheckList'"><img src="https://i.ibb.co/THQ11bq/user.png">승인요청관리</span></ul>
                         <ul><span onclick = "location.href='<%=request.getContextPath()%>/member/memberLogout'"><img src="https://i.ibb.co/h8XQfKD/add-user-1.png">로그아웃</span></ul>
-                        <% } else { %>
+                        <% }else if(MemberService.MEMBER_KIND_SELLER.equals(loginMember.getKind())){%>
+                        <ul><span><img src="https://i.ibb.co/vwMbtvG/door.png"><%=loginMember.getName() %>님</span></ul>
+                        <ul><span onclick = "location.href='<%=request.getContextPath()%>/member/myPage'"><img src="https://i.ibb.co/THQ11bq/user.png">마이페이지</span></ul>
+                        <ul><span onclick = "location.href='<%=request.getContextPath()%>/member/memberLogout'"><img src="https://i.ibb.co/h8XQfKD/add-user-1.png">로그아웃</span></ul>	
+                        <% }else { %>
                         <ul><span><img src="https://i.ibb.co/vwMbtvG/door.png"><%=loginMember.getName() %>님</span></ul>
                         <ul><span onclick = "location.href='<%=request.getContextPath()%>/CartList'"><img src="https://i.ibb.co/BygCMZw/cart.png">장바구니</span></ul>
                         <ul><span onclick = "location.href='<%=request.getContextPath()%>/member/myPage'"><img src="https://i.ibb.co/THQ11bq/user.png">마이페이지</span></ul>
-                        
                         <ul><span onclick = "location.href='<%=request.getContextPath()%>/member/memberLogout'"><img src="https://i.ibb.co/h8XQfKD/add-user-1.png">로그아웃</span></ul>
                        <% } %> 
                     <%} else { %>

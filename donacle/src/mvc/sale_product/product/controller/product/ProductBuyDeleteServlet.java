@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import mvc.sale_product.product.model.service.ProductService;
 
 /**
@@ -30,9 +32,14 @@ public class ProductBuyDeleteServlet extends HttpServlet {
 //		System.out.println("productbuyCancel@servlet@codes@" + Arrays.toString(codes));
 		int result = pws.ProductBuyCancel(codes);
 		System.out.println("productBuyDelete@servlet@result@" + result);
+
+		String	msg = result > 0 ? "주문 취소에 성공했습니다." : "주문 취소에 실패했습니다.";
+		Gson gson = new Gson();
+		String jsonStr = gson.toJson(msg);
+		System.out.println(jsonStr);
 		
 		response.setContentType("application/json; charset=utf-8");
-		response.getWriter().print("");
+		response.getWriter().print(jsonStr.toString());
 	}
 
 }

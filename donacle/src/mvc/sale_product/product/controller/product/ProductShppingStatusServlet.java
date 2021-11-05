@@ -30,6 +30,11 @@ public class ProductShppingStatusServlet extends HttpServlet {
 		// test버전
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
+		if(member == null) {
+			String location = request.getContextPath() + "/";
+			
+			response.sendRedirect(location);
+		}
 		String id = member.getId(); // 아이디 가져오기 필요
 		
 		
