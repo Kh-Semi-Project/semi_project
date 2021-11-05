@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 		<footer>
             <div class="copyright">
-                <span>상호: (주)두나클</span><b> | </b>
+                <span>상호: (주)도나클</span><b> | </b>
                 <span>이메일: contact@donacle.com</span><b> | </b>
                 <span>대표전화: 0000-0000</span><br>
                 <span>주소: 서울특별시 강남구 테헤란로14길 6 남도빌딩</span><br>

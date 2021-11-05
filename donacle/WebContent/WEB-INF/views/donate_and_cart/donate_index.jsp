@@ -3,10 +3,11 @@
     pageEncoding="UTF-8"%>
 <%@page import="mvc.donate_and_cart.donate.model.vo.Donate" %>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
-<% 
-	List<Donate> donate = (List<Donate>) request.getAttribute("donate_user_info");
-	int donateCount = (int) request.getAttribute("donate_count");
+<%
+	String msg2 = (String) request.getAttribute("msg");
+	Member member = (Member) request.getAttribute("loginMember");
 %>
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <title>Donate</title>
 <style>
 
@@ -17,24 +18,23 @@
   font-style: normal;
 }
 
-a {
-	font-size: 30px;
-	text-decoration: none;
-	color: black;
-}
-h1 {
+.subVeiewTitle {
 	font-family: 'Pretendard-ExtraLight';
 	text-align: center;
 }
 
-h3, h4 {
-	background-color: #ececec;
+h3 {
+	margin-top: 50px;
+}
+.donate-font {
+
 	font-family: 'Pretendard-ExtraLight';
 	text-align: right;
 }
 #money-video {
 	width: 100%;
 	height: 300px;
+	margin-top: 100px;
 }
 #donate {
 	margin: auto;
@@ -48,24 +48,38 @@ h3, h4 {
 	color: white;
 }
 </style>
+<% if(member != null){ %>
+<%
+	List<Donate> donate = (List<Donate>) request.getAttribute("donate_user_info");
+	int donateCount = (int) request.getAttribute("donate_count");
+%>
 <% 
 	int price = 0;
 	String name = "";
 	for(Donate d : donate){ 
 	price += d.getDonate_price();
-	name = d.getName();
 	}
+	name = member.getName();
 %>	
 <section id = "donate">
-	<a href="<%= request.getContextPath() %>">Donacle</a>
-	<hr />
-	<h1>후원</h1>
-	<h3><%= name %> 님, 총 후원액</h3>
-	<h4><%= price %>원</h4>
+<div id="cart_title" style="background:#f7f3d8; text-align:center; width: 1300px; height:180px; padding-top:50px; margin-top:200px; ">
+     	<h1 class="subVeiewTitle">후 원</h1>
+     	
+        <span class="subVeiewcontent">흩날리는 민들레 처럼 작은 후원이 모여 기적을 만듭니다.</span>
+</div>
+<% System.out.println(donateCount); %>
+	<h1 class="donate-font"><%= name %> 님, 총 후원액</h1>
+	<h4 class="donate-font"><%= price %>원</h4>
+	<% if(price >= 500) { %>
+	<div id="donate-pic" style="width: 100%; text-align: center;" ><img src="<%= request.getContextPath()%>/css/donate_and_cart/enough.png" alt="" width="1000px"/></div>
+	<% } else { %>
+
 	<video src="<%= request.getContextPath() %>/css/donate_and_cart/money2.mp4" id="money-video"></video>
 	<br />
 	<input type="submit" id="play" value="후원하기"/>
+
 	<form action="<%= request.getContextPath() %>/donate/insert" name="DonateFrm" method="POST"></form>
+	<% } %>
 </section>
 <script>
 	$("#play").on('click', function(){
@@ -76,5 +90,23 @@ h3, h4 {
 		else {
 			$("[name=DonateFrm]").submit();
 		}
-	})
+	});
+	
+	$(document).ready(function(){
+		shake();
+		
+	});
+	function shake(){
+		$("#donate-pic").animate({'opacity':'1','margin-left':'40px'},500, function(){
+			$("#donate-pic").animate({'opacity':'1','margin-left':'-40px'},500, function(){shake();})
+		});
+	}
 </script>
+
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
+<% } else { %>
+<script>
+		alert('<%= msg2 %>');
+		location.href = "<%= request.getContextPath() %>/memberLogin";
+</script>
+<% } %>

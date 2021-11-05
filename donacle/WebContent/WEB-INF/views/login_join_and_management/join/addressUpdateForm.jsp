@@ -14,7 +14,7 @@
 					<input type="text" placeholder="우편번호" name="zipCode" id="zipCode" value ="<%= loginMember.getAddress().getZipCode()%>" readonly>
 					<input type="button" id = "findAddr" value="우편번호 찾기" onclick ="findAddress();"/>
 					<input type="text" placeholder="주소" name="address" id="myAddress" value ="<%= loginMember.getAddress().getAddress()%>" readonly>
-					<input type="text" placeholder="상세주소 (직접입력)" name="detailAddress" id="detailAddress" <%= loginMember.getAddress().getDetailAddress()%> >
+					<input type="text" placeholder="상세주소 (직접입력)" name="detailAddress" id="detailAddress" value= "<%= loginMember.getAddress().getDetailAddress()%>" >
 					<input type="text" placeholder="부가주소" name="subAddress" id="subAddress" readonly>
 			</div>
 			</div>
@@ -28,4 +28,4 @@
 	</div>
 	</form>
 
-<%@include file = "/WEB-INF/views/login_join_and_management/common/footer.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>

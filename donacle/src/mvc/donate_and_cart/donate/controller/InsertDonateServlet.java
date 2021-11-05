@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import mvc.donate_and_cart.donate.model.service.DonateService;
 import mvc.donate_and_cart.donate.model.vo.Donate;
+import mvc.login_join_and_management.model.vo.Member;
 
 /**
  * Servlet implementation class InsertDonateServlet
@@ -25,8 +27,9 @@ public class InsertDonateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 사용자 입력 값 처리
-//		String id = request.getParameter("id");
-		String id = "test0";
+		HttpSession session = request.getSession();
+		Member member = (Member)session.getAttribute("loginMember");
+		String id = member.getId();
 		// 2. 업무 로직
 		int result = donateService.insertDonate(id);
 
