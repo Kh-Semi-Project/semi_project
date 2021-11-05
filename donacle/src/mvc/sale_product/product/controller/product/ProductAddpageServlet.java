@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import mvc.login_join_and_management.model.vo.Member;
 
 /**
  * Servlet implementation class ProductAddpageServlet
@@ -18,8 +21,6 @@ public class ProductAddpageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//session에서 가져오는거 필요
-		String id = "test0";
 		
 		request
 			.getRequestDispatcher("/WEB-INF/views/sale_product/seller/productAdd.jsp")

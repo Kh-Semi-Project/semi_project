@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import mvc.login_join_and_management.model.vo.Member;
 import mvc.sale_product.product.model.service.ProductService;
 import mvc.sale_product.product.model.vo.ProductBuy;
 
@@ -27,7 +29,9 @@ public class ProductOrderListServlet extends HttpServlet {
 		// String id = request.getParameter("id");// 아이디 값 가져오기
 		// 아직 통합작업이 되지 않아 test로 작업
 		// 1. 사용자 입력 값처리
-		String id = "test0";
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("loginMember");
+		String id = member.getId(); // 아이디 가져오기 필요
 		
 		// 2. 업무로직
 		List<ProductBuy> pbList = ps.productOrderList(id);

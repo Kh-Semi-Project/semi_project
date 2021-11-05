@@ -7,6 +7,13 @@
 	List<ProductWriting> productList = (List<ProductWriting>) request.getAttribute("ProductList");
 %>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
+<style>
+	input[name=productdeleteBtn]:hover, input[name=productupdateBtn]:hover, input[name=hoverproductWritingBtn]:hover{
+		background-color:black;
+		color:white;
+	}
+</style>
 <h2>제품 리스트</h2>
 <section id="product-list-container">
 	<table id="product-list">
@@ -63,7 +70,7 @@ index++;
 <% if(pw.getAdmin_check() == null|| pw.getAdmin_check().length() == 0){ %>
 		<!-- 글 추가를 하지 않은 제품 -->
 <%}else if(pw.getAdmin_check().equals("n")){%>
-		미승인
+		<b>미승인</b>
 <%}else{%>
 		승인
 <%}%><!-- 왜 빨간줄 떴다가 안떴다가 그러는지 모르겠음 -->
@@ -78,7 +85,7 @@ index++;
 		</tr>
 <%}%>
 		<tr><!-- 삭제 버튼 만들기 -->
-			<td><input type="button" name = "productdeleteBtn" value="제품 삭제"/></td>
+			<td colspan="11"><input type="button" name = "productdeleteBtn" value="제품 삭제"/></td>
 		</tr>
 	</table>
 </section>

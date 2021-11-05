@@ -23,6 +23,11 @@
 			text-align : center;
 		}
 	</style>
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
+<%
+	Member member = (Member) session.getAttribute("loginMember");
+%>
+<%if(member != null){ %>
 	<section id = "product-add-container">
 	<h2>물건 추가</h2>
 	<form
@@ -44,7 +49,7 @@
 				<th>판매자</th>
 				<!--  ★-------------------★  -->
 				<!-- 후에 id값 가져와야됨 -->
-				<td>: <input type = "text" name = "sale_id" readonly value="test0"/></td>
+				<td>: <input type = "text" name = "sale_id" readonly value="<%=member.getId()%>"/></td>
 			</tr>
 			<tr>
 				<th>제품명</th>
@@ -146,3 +151,9 @@
 			}
 		}
 	</script>
+<%}else{%>
+ <script>
+ 		alert('로그인 후 이용 가능합니다.');
+		location.href='<%=request.getContextPath()%>/memberLogin';
+ </script>
+<%} %>

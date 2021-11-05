@@ -7,12 +7,15 @@
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <%
 	List<ProductBuy> pblist = (List<ProductBuy>) request.getAttribute("ProductBuyList");
+	Member member = (Member) session.getAttribute("loginMember");
 %>   
 <style>
 input[name=productOrderCancelBtn]{
 	margin : auto;
 }
 </style>
+<%if(member != null){ %>
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <h2>주문 리스트 확인</h2>
 <section id="product-order-container">
 	<table id="tbl-board">
@@ -83,10 +86,13 @@ if(pb.getProduct_shipping_status().equals("n") && pb.getProduct_receipt_yn().equ
 			<td><%= pb.getProduct_code()%></td>
 			<td><%= pb.getProduct_buy_code()%></td>
 		</tr>
-<%} %>
 		<tr><!-- 주문취소 버튼 만들기 -->
 			<td colspan="9"><input type="button" name = "productOrderCancelBtn" value="주문취소"/></td>
 		</tr>
+<%} %>
+<% if(pblist == null){%>
+	
+<%}%>
 	</table>
 </section>
 <script>
@@ -158,3 +164,9 @@ if(pb.getProduct_shipping_status().equals("n") && pb.getProduct_receipt_yn().equ
 		 }
 	 });
 </script>
+<%}else{%>
+ <script>
+ 		alert('로그인 후 이용 가능합니다.');
+		location.href='<%=request.getContextPath()%>/memberLogin';
+ </script>
+<%}%>

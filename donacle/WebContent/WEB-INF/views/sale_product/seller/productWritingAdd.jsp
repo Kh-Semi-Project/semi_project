@@ -1,3 +1,4 @@
+<%@page import="mvc.login_join_and_management.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="mvc.sale_product.product.model.vo.Product"%>
@@ -6,8 +7,9 @@
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <%
 	Product pw_data = (Product) request.getAttribute("pw_data");
+	Member member = (Member) session.getAttribute("loginMember");
 %>
-
+<%if(member != null){ %>
 	<section id = "product-writing_add-container">
 	<h2>제품 판매글 추가</h2>
 	<form
@@ -140,3 +142,9 @@
 	          });
 	      };
 	 </script>
+ <%}else{%>
+ <script>
+ 		alert('로그인 후 이용 가능합니다.');
+		location.href='<%=request.getContextPath()%>/memberLogin';
+ </script>
+ <%}%>

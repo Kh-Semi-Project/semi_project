@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 
 import mvc.login_join_and_management.model.vo.Member;
-import mvc.product_review.common.FileUploadPath;
 import mvc.product_review.common.MvcFileRenamePolicy;
 import mvc.product_review.common.vo.Attach;
 import mvc.product_review.review.model.service.ReviewService;

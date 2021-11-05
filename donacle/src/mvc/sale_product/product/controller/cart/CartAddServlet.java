@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import mvc.login_join_and_management.model.vo.Member;
 import mvc.sale_product.product.model.service.CartService;
 import mvc.sale_product.product.model.service.ProductService;
 
@@ -25,7 +27,9 @@ public class CartAddServlet extends HttpServlet {
 		// 1. 값처리
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
 		int product_buy_count = Integer.parseInt(request.getParameter("product_buy_count"));
-		String id = "test0"; // 아이디 가져오기 필요
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("loginMember");
+		String id = member.getId(); // 아이디 가져오기 필요
 		
 		// 2. 업무로직
 		// 장바구니 번호 가져오기
@@ -35,8 +39,11 @@ public class CartAddServlet extends HttpServlet {
 		System.out.println("result@"+result);
 		//code보내야됨
 		//category -> /sale_product/productwritingList?category=0
-		String location = request.getContextPath() + "/sale_product/productwritingList?category=0";
-		
+		String location = request.getHeader("Referer");
+		String msg = result > 0 ? "1" : "0";
+		session.setAttribute("msg3", msg);
+//		String location = request.getContextPath() + "/sale_product/productwritingList?category=0";
+		System.out.println("location@"+location);
 		response.sendRedirect(location);
 		
 	}

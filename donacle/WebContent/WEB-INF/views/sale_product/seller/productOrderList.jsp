@@ -7,8 +7,15 @@
 <%
 	List<ProductBuy> pbs = (List<ProductBuy>) request.getAttribute("ProductOrderList");
 %>
-<section id="product-order-container">
-	<table id="product-order">
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
+<style>
+	input[name=productShppingStatusBtn]:hover{
+		background-color:black;
+		color:white;
+	}
+</style>
+<section id="product-order-container" style="margin-top:200px;">
+	<table id="product-order" style="margin-bottom:50px;">
 		<tr>
 			<th>번호</th>
 			<th colspan="2">제품정보</th> <!-- 제품 사진, 제품명 --> 
@@ -28,10 +35,10 @@ index++;
 		</tr>
 		<tr>
 			<td rowspan="2"><%=index %></td>
-			<td rowspan ="2"><img src="<%=pb.getProduct_img() %>" width="100px" height="150px"/></td>
+			<td rowspan ="2"><img src="<%=pb.getProduct_img() %>" width="120px" height="150px"/></td>
 			<td><%=pb.getProduct_name() %></td>
 			<td rowspan="2"><%=pb.getId()%></td>
-			<td rowspan="2"><%=pb.getPrice_sum()%></td>
+			<td rowspan="2"><%=pb.getPrice_sum()%>원</td>
 			<td rowspan="2"><%=pb.getProduct_buy_date()%></td>
 			<td rowspan="2">
 <%if(pb.getProduct_shipping_status().equals("n")){%>
@@ -40,7 +47,7 @@ index++;
 				배송 완료
 <%} %>
 </td>
-			<td rowspan="2"><%=pb.getProduct_receipt_yn().equals("n") == true ? "미수령" : "수령"%>
+			<td rowspan="2"><%=pb.getProduct_receipt_yn().equals("n") == true ? "<b>미수령</b>" : "수령"%>
 						<form 
 							name = "productShppingStatusFrm<%=index %>"
 							action="<%= request.getContextPath() %>/sale_product/productShppingStatus"
@@ -52,7 +59,7 @@ index++;
 			</td>
 		</tr>
 		<tr>
-			<td><%=pb.getProduct_buy_count()%></td>
+			<td><%=pb.getProduct_buy_count()%>개</td>
 		</tr>
 <%}%>
 	</table>

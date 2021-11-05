@@ -9,8 +9,9 @@
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <%
 	List<ProductWriting> pwlist = (List<ProductWriting>) request.getAttribute("ProductWritingAdminList");
+	Member member = (Member) session.getAttribute("loginMember");
 %> 
-
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <style>
 body{
 	text-align  :center;
@@ -20,15 +21,21 @@ input[name=AdminCheckBtn]{
 	width : 100%;
 	height : 100%;
 }
+input[name=AdminCheckBtn]:hover{
+	background-color:black;
+	color:white;
+}
+
 
 table tr td{
 	text-align : left;
 }
 </style>
+<%if(member != null){ %>
 <h2>승인 요청 리스트 확인</h2>
 <section id="product-order-container">
 	<table id="tbl-board">
-		<tr>
+		<tr style="border-top: 1px solid black;">
 			<th colspan="3">제품정보</th> <!-- 제품 사진, 제품명 클릭시 해당 판매 글 페이지로 이동 -->
 			<th>승인</th>
 			<!-- 전체 선택 추가하기 -->
@@ -92,3 +99,9 @@ index++;
 		$(name).submit();
 	 });
 </script>
+<%}else{%>
+ <script>
+ 		alert('로그인 후 이용 가능합니다.');
+		location.href='<%=request.getContextPath()%>/memberLogin';
+ </script>
+<%}%>

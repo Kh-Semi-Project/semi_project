@@ -153,6 +153,7 @@ public class ProductDao {
 				pw.setRead_count(rset.getInt("read_count")); // 조회수
 				pw.setProduct_writing_date(rset.getDate("product_writing_date"));
 				pw.setProduct_name(rset.getString("product_name"));
+				pw.setId(rset.getString("id"));
 				pw.setCategory_code(rset.getInt("CATEGORY_CODE"));
 				pw.setProduct_price(rset.getInt("product_price"));
 				pw.setProduct_img(rset.getString("product_img"));

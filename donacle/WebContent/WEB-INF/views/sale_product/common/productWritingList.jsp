@@ -3,9 +3,10 @@
  <%@page import="java.util.List"%>
  <%@page import="mvc.sale_product.product.model.vo.ProductWriting"%>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/productList.css" />
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/common.css"/>
-<%@ include file="/WEB-INF/views/sale_product/common/productListMenu.jsp" %>
 <%
+	String msg2 = (String) request.getAttribute("msg");
+	Member member = (Member) session.getAttribute("loginMember");
+
 	List<ProductWriting> list = (List<ProductWriting>) request.getAttribute("productWritinglist");
 	List<ProductWriting> toplist = (List<ProductWriting>) request.getAttribute("productWritingtoplist");
 %>
@@ -14,13 +15,13 @@
 
 		#pro_Counts {display : none;}
 		
-		#product-List-container {margin: auto; text-align:center;}
+		#product-List-container {margin: auto; text-align:center; margin-top:280px;}
 		
-		.product_writings_row{float: left; width : 33%; padding-top : 10px; padding-bottom:10px;}
+		.product_writings_row{float: left; width : 33%; padding-top : 10px;padding-bottom:10px; }
 		
 		.product_writings_row a{text-decoration:none; color : black;}
 		
-		div#pageBar{margin-top:10px; text-align:center; position: fixed; bottom: 0; width: 100%;}
+		div#pageBar{margin-top:10px; text-align:center; position: fixed; bottom: 0; width: 100%; font-size:20px;}
 		
 		div#pageBar span.cPage{color: #0066ff; margin-right: 5px;}
 		
@@ -31,13 +32,18 @@
 		}
 
 </style>
+<%if(member != null){ %>
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
+<%@ include file="/WEB-INF/views/sale_product/common/productListMenu.jsp" %>
+
 	<section id = "product-List-container">
-	<h2 style="padding-top:50px;">조회수가 높은 Top3 제품</h2>
+	<h2 style="padding-top:20px;">조회수가 높은 Top3 제품</h2>
 		<!--조회수가 높은 제품 3개 -->
+		
 <%for(ProductWriting toppw : toplist){ %>
-<div class = "product_writings_row top_product" >
+<div class = "product_writings_row top_product" style="text-align:center; height:180px; padding-top:20px;">
 			<a href="<%= request.getContextPath() %>/sale_product/ProductWritingView?code=<%= toppw.getProduct_writing_code() %>">
-				<img src = "<%= toppw.getProduct_img() %>" width="100px" height="110px"/><br/>
+				<img src = "<%= toppw.getProduct_img() %>" width="100px" height="120px"/><br/>
 				<%= toppw.getId() %><br/>
 				<%= toppw.getProduct_name() %><br/>
 				<%= toppw.getProduct_price() %>원<br/>
@@ -49,7 +55,7 @@
 			리스트로 불러와서 출력하기  
 			사진/판매자이름/제품명 클릭시 productDetil로 이동
 			클릭시 form에 정보 저장 후 이동 -->	
-		<h2 style="margin-top:230px;">모든 제품</h2>
+		<h2 style="margin-top:250px;">모든 제품</h2>
 <%for(ProductWriting pw : list){ %>
 <div class = "product_writings_row" >
 			<a href="<%= request.getContextPath() %>/sale_product/ProductWritingView?code=<%= pw.getProduct_writing_code() %>">
@@ -61,6 +67,10 @@
 </div>
 <%} %>
 		<div id='pageBar'><%= request.getAttribute("pagebar") %></div>
-
-
+<% } else { %>
+<script>
+		alert('로그인 후 이용 가능합니다.');
+		location.href='<%=request.getContextPath()%>/memberLogin';
+</script>
+<% } %>
 	</section>
