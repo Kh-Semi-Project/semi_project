@@ -84,7 +84,7 @@ public class EmailCheckServelt extends HttpServlet {
             msg.setSubject("Donacle에서 인증번호를 보내드립니다.");
             //메일 내용
             msg.setText("인증번호 : " + temp + "\n"
-            		+ "요청한 페이지에서 인증번호를 정확히 입력해주시기 바랍니다. :)");
+            		+ "회원가입 페이지에서 인증번호를 정확히 입력해주시기 바랍니다. :)");
             
             Transport.send(msg);
             
