@@ -3,6 +3,7 @@ package mvc.product_review.review.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,13 +32,14 @@ public class ReviewUpdateServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ServletContext application = getServletContext();
+		String saveDirectory = application.getRealPath("/upload");
 		MultipartRequest multipartRequest = new MultipartRequest(
-				request, 
-				FileUploadPath.FILE_SAVE_PATH, 
-				1024 * 1024 * 10, 
-				"utf-8", 
-				new MvcFileRenamePolicy()
-			);
+				request, saveDirectory,
+						1024 * 1024 * 50, 
+						"utf-8", 
+						new MvcFileRenamePolicy()
+					);
 
 		Review review = new Review();
 		review.setReviewNo(Integer.parseInt(multipartRequest.getParameter("reviewNo")));
