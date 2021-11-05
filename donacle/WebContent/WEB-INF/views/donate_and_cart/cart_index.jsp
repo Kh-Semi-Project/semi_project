@@ -1,10 +1,15 @@
+<%@page import="mvc.login_join_and_management.model.vo.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="mvc.donate_and_cart.cart.model.vo.CartList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
+	String msg2 = (String) request.getAttribute("msg");
+	Member member = (Member) request.getAttribute("loginMember");
 	List<CartList> cl = (List<CartList>) request.getAttribute("cartList");
 %>
+
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <title>Cart</title>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <style>
@@ -18,16 +23,7 @@
 hr {
 	color: #ececec;
 }
-.wrapper {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-a {
-	font-size: 30px;
-	text-decoration: none;
-	color: black;
-}
+
 h1 {
 	font-family: 'Pretendard-ExtraLight';
 	text-align: center;
@@ -35,6 +31,7 @@ h1 {
 table {
 	border-collapse: collapse;
 	margin: auto;
+	margin-top: 100px;
 	border: 1px solid black;
 }
 th, td {
@@ -51,6 +48,9 @@ td {
 	border-bottom: #ececec;
 	font-size: 20px;
 	text-align: center;
+}
+#cart {
+	margin: auto;
 }
 #check-all {
 	margin-right: 5px;
@@ -81,20 +81,23 @@ td {
 	height: 100px;
 }
 </style>
+
 <section id = "cart">
-	<a href="<%= request.getContextPath() %>">Donacle</a>
-	<hr />
-	<div class="wrapper">
-		<h1>장바구니</h1>
+<div id="cart_title" style="background:#f7f3d8; text-align:center; width: 1300px; height:180px; padding-top:50px; margin-top:200px; ">
+     	<h1 class="subVeiewTitle">장 바 구 니</h1>
+     	
+        <span class="subVeiewcontent">여러분의 구매는 누군가에게 큰 힘이 됩니다. :D</span>
+</div>
+<%if(member != null){ %>
 			<table>
 				<tr>
 					<th width="100" ><input type="checkbox" id="check-all"/></th>
-					<th colspan="2" width="500">상품 정보</th>
-					<th width="200">상품 금액</th>
-					<th>상품 갯수</th>
-					<th>배송비</th>
-					<th>장바구니 삭제</th>
-					<th>주문하기</th>
+					<th colspan="2" width="400">상품 정보</th>
+					<th width="250">상품 금액</th>
+					<th width="100">상품 갯수</th>
+					<th width="150">배송비</th>
+					<th width="110">장바구니 삭제</th>
+					<th width="110">주문하기</th>
 				</tr>
 <% 
 	int price = 0;
@@ -129,6 +132,11 @@ td {
 					</form>
 				</td></tr>
 							
+<% }%>
+<% if(cl.isEmpty()) { %>
+				<tr>
+					<td colspan="8"><img src="<%= request.getContextPath() %>/css/donate_and_cart/tung.png" alt="" width="500px;"/></td>
+				</tr>
 <% } %>
 				<tr>
 					<td style="display:none;"><input type="hidden" name = "price_sum_input" value="<%=price%>"/></td>
@@ -136,7 +144,7 @@ td {
 				</tr>
 
 			</table>
-	</div>
+
 <script>
 $("[name=buy-btn]").on('click',function(){
 	$("[name="+$(this).attr("id")+"]").attr('action',"<%= request.getContextPath() %>/sale_product/productBuy" );
@@ -179,4 +187,11 @@ $("[name=product]").on('change', function(){
 });
 
 </script>
+<% } else { %>
+<script>
+		alert('<%=msg2%>');
+		location.href='<%=request.getContextPath()%>/memberLogin';
+</script>
+<% } %>
 </section>
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
