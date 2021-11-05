@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@include file = "/WEB-INF/views/homepage_introduce/header.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login_join_and_management/join.css">
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script>
+<!--  <script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script> `-->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<form name="memberJoinFrm" action="<%= request.getContextPath() %>/memberJoin" method="POST">
 	<div class="container">
@@ -31,7 +31,7 @@
 			<div id="nameMsg"></div>
 			<div class = "content">
 			<h4>이메일</h4>
-					<input type="text" placeholder = "이메일" name="emailId" id="email" class = "email">
+					<input type="text" placeholder = "이메일" name="emailId" id="email">
        				<input type="button" value="인증번호 발송" id="sendEmail"  />	
 					<input type="password" placeholder = "인증번호를 입력해주세요." id="writeKey" style = "display:none;" />
 					<input type="button" value="인증하기" id="sendKey" name="sendKey" style = "display:none;"/><br />
@@ -73,6 +73,6 @@
 			<input type="button" value="취소" class = "cancelBtn" onclick = "location.href = '<%=request.getContextPath()%>/'"/>
 			</div>
 		</div>
-</div>
-	</form>
-<%@include file = "/WEB-INF/views/login_join_and_management/common/footer.jsp" %>
+	</div>
+</form>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file = "/WEB-INF/views/homepage_introduce/header.jsp" %>
 	<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/login_join_and_management/memberDetail.css">
+	href="<%=request.getContextPath()%>/css/login_join_and_management/adminMemberDetail.css">
 <%
 	Member memberById = (Member) request.getAttribute("memberById");
 %>
@@ -35,7 +35,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>생일</th>
+				<th>생년월일</th>
 				<td>	
 				<%= memberById.getBirthday()%>
 				</td>
@@ -79,4 +79,4 @@
 <form name = "adminMemberDeleteFrm" action="<%= request.getContextPath() %>/admin/memberDelete" method = "post">
 				<input type="hidden" name="id" value ="<%=memberById.getId() %>" />
 				</form>
-<%@include file = "/WEB-INF/views/login_join_and_management/common/footer.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>
