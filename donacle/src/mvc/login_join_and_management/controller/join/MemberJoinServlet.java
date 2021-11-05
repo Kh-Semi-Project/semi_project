@@ -23,7 +23,7 @@ import mvc.login_join_and_management.model.vo.Member;
 @WebServlet("/memberJoin")
 public class MemberJoinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private MemberService memberService = new MemberService();
+	private MemberService memberService = new MemberService();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

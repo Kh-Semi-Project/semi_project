@@ -61,5 +61,4 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 		<div id="pagebar"><%=request.getAttribute("pagebar")%></div>
 		</div>
 		</div>
-<%@include
-	file="/WEB-INF/views/login_join_and_management/common/footer.jsp"%>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>

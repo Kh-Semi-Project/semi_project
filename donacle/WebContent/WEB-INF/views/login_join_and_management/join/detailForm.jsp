@@ -32,7 +32,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>생일</th>
+				<th>생년월일</th>
 				<td>	
 				<%= loginMember.getBirthday()%>
 				</td>
@@ -49,7 +49,6 @@
 			<tr>
 				<td colspan ="2">
 				<input type="button" class = "Btn" value="수정" onclick = "location.href='<%=request.getContextPath()%>/member/memberUpdate'" />
-				<input type="button" class = "Btn" value="탈퇴" onclick = "deleteMember();" />
 				<input type="button" class = "Btn"value="돌아가기" onclick = "location.href='<%=request.getContextPath()%>/member/myPage'">
 				</td>
 				
@@ -62,7 +61,4 @@
 		</div>
 	</div>
 </div>
-<form name = "memberDeleteFrm" action="<%= request.getContextPath() %>/member/memberDelete" method = "post">
-				<input type="hidden" name="id" value ="<%=loginMember.getId() %>" />
-				</form>
-<%@include file = "/WEB-INF/views/login_join_and_management/common/footer.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>

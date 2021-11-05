@@ -16,7 +16,7 @@
 				<nav class="nav">
 					<a href="<%=request.getContextPath()%>/memberLogin">로그인</a> | 
 					<a href="<%=request.getContextPath()%>/findPassword">비밀번호 찾기</a> | 
-					<a href="<%=request.getContextPath()%>/">처음 화면으로</a>
+					<a href="<%=request.getContextPath()%>/">처음으로</a>
 				</nav>
 				</div>
 				
@@ -36,5 +36,4 @@
 		</div>
 	</div>
 </div>
-<%@include
-	file="/WEB-INF/views/login_join_and_management/common/footer.jsp"%>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>"%>

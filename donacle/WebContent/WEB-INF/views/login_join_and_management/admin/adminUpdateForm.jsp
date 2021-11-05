@@ -31,7 +31,7 @@
 			</div>
 			<div class="content">
 				<h4>생년월일</h4>
-				<input type="text" placeholder= "생년월일 (ex)19940803)"name="birthday" id="birthday" value = "<%= memberById.getBirthday()%>">
+				<input type="text" placeholder= "생년월일 (ex)19940803)"name="birthday" id="birthday" value = "<%= String.valueOf((memberById.getBirthday()))%>">
 			</div>
 			<div class="content">
 				<h4>가입 구분</h4>
@@ -61,4 +61,4 @@
 	</div>
 	</form>
 
-<%@include file = "/WEB-INF/views/login_join_and_management/common/footer.jsp" %>
+<%@include file = "/WEB-INF/views/homepage_introduce/footer.jsp" %>
