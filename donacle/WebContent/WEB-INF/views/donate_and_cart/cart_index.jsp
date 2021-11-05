@@ -126,9 +126,10 @@ td {
 						<input type="hidden" name="cartListNo" id ="cartListNo" value="<%= c.getCartList_no() %>"/>
 						<input type="hidden" name="product_code" id ="product_code" value="<%= c.getProduct_code() %>"/>
 						<input type="hidden" name="product_buy_count" id ="product_buy_count" value="<%= c.getProduct_cart_count() %>"/>
-						<input type="hidden" name="product_buy_price" id ="product_buy_price" value="<%= (int)(c.getProduct_cart_count() * c.getProduct_price() * 0.9) %>"/>
+						<input type="hidden" name="product_buy_price" id ="product_buy_price" value="<%=c.getProduct_price()%>"/>
+						<input type="hidden" name="seller_id" id ="seller_id" value="<%= c.getId() %>"/>
 						<input type="hidden" name="product_donate_price" id ="product_donate_price" value="<%= (int)(c.getProduct_cart_count() * c.getProduct_price() * 0.1) %>"/>
-						<input type="hidden" name="price_sum" id ="price_sum" value="<%= c.getProduct_cart_count() * c.getProduct_price() %>"/>
+						<input type="hidden" name="sum_price" id ="sum_price" value="<%= c.getProduct_cart_count() * c.getProduct_price() %>"/>
 					</form>
 				</td></tr>
 							
@@ -147,7 +148,7 @@ td {
 
 <script>
 $("[name=buy-btn]").on('click',function(){
-	$("[name="+$(this).attr("id")+"]").attr('action',"<%= request.getContextPath() %>/sale_product/productBuy" );
+	$("[name="+$(this).attr("id")+"]").attr('action',"<%= request.getContextPath() %>/sale_product/productBuyInfo" );
 	$("[name="+$(this).attr("id")+"]").submit();
 });
 

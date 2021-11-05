@@ -43,7 +43,32 @@
 								
 							</td>
 							<td>
-								<h4>미구현 구역</h4>
+							<!-- 소비자 -->
+							<!-- 구매한 제품 리스트 확인 -->
+							<%if("C".equals(loginMember.getKind())) {%>
+								<h4>주문 리스트</h4>
+								<br/>
+								<p class = "info">회원님께서 구매하신 물건 내역을 관리합니다.</p>
+								<input type="button" class = "btn" value="구매 내역 확인" onclick = "location.href='<%=request.getContextPath()%>/sale_product/productBuyList?id=<%=loginMember.getId()%>'"/>
+							
+							<!-- 판매자 -->							
+							<!-- 주문 리스트, 제품 리스트-->
+							<%}else if("S".equals(loginMember.getKind())){ %>
+								<h4>제품</h4>
+								<br/>
+								<p class = "info">판매자 회원님께서 올리신 <br>제품 주문 내역과 제품을 관리합니다.</p>
+								<input type="button" class = "btn" value="주문 확인" onclick = "location.href='<%=request.getContextPath()%>/sale_product/productOrderList?id=<%=loginMember.getId()%>'"/>
+								<input type="button" class = "btn" value="제품 목록" onclick = "location.href='<%=request.getContextPath()%>/sale_product/productList?id=<%=loginMember.getId()%>'"/>
+							
+							<!-- 관리자 -->
+							<!-- 승인요청 리스트 확인 -->
+							<%}else{ %>
+								<h4>승인 요청</h4>
+								<br/>
+								<p class = "info">관리자 회원님께 요청온<br>승인 요청 글을 관리합니다.</p>
+								<input type="button" class = "btn" value="승인 요청 목록" onclick = "location.href='<%=request.getContextPath()%>/sale_product/productWritingAdminCheckList'"/>
+								
+							<%} %>
 							</td>
 						</tr>
 					</table>

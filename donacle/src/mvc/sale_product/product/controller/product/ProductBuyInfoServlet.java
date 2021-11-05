@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import mvc.login_join_and_management.model.vo.Member;
 import mvc.sale_product.product.model.service.ProductService;
 import mvc.sale_product.product.model.vo.ProductBuy;
 
@@ -32,9 +34,10 @@ public class ProductBuyInfoServlet extends HttpServlet {
 		 */
 		// 1. 사용자입력 값 처리
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
+		System.out.println("product_code@"+product_code);
 		int product_buy_count = Integer.parseInt(request.getParameter("product_buy_count"));
-		String id = "test0";//request.getParameter("buy_id"); // 임시로 넣기
-
+		String id = request.getParameter("seller_id");
+		
 		int sum_price = Integer.parseInt(request.getParameter("sum_price"));
 		int product_buy_price = (int)(sum_price * 0.9);//제품 가격의 90%만 저장
 		int product_donate_price = sum_price - product_buy_price;//제품 가격의 10% 후원 금액으로 저장
@@ -47,11 +50,11 @@ public class ProductBuyInfoServlet extends HttpServlet {
 		pb.setPrice_sum(sum_price);
 		pb.setProduct_donate_price(product_donate_price);
 		pb.setId(id);	
-		ProductBuy produdctBuy = pws.ProductBuyInfo(pb); // 제품 구매를 하고 나서 해당 제품 정보
+		ProductBuy productBuy = pws.ProductBuyInfo(pb); // 제품 구매를 하고 나서 해당 제품 정보
 		
 		// 3. 응답처리
-		request.setAttribute("ProductBuyInfo", produdctBuy);
-		System.out.println("productBuyInfo@servlet@"+produdctBuy);
+		request.setAttribute("ProductBuyInfo", productBuy);
+		System.out.println("productBuyInfo@servlet@"+productBuy);
 		request
 			.getRequestDispatcher("/WEB-INF/views/sale_product/consumer/productBuy.jsp")
 			.forward(request,  response);

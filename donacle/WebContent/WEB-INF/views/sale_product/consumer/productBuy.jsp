@@ -1,3 +1,4 @@
+<%@page import="mvc.login_join_and_management.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="mvc.sale_product.product.model.vo.ProductBuy"%>
@@ -5,9 +6,14 @@
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/common.css"/>
+<%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
+<%@ include file="/WEB-INF/views/sale_product/common/productListMenu.jsp" %>
 <%
 	ProductBuy pb = (ProductBuy) request.getAttribute("ProductBuyInfo");
+	Member member = (Member) session.getAttribute("loginMember");	
+	
 %>
+<%if(member != null){ %>
 	<style>
 	body {
 		text-align : center;
@@ -27,9 +33,13 @@
 	input[name=orderBtn]{
 		width : 100px;
 	}
+	input[name=orderBtn]:hover{
+		background-color : black;
+		color : white;
+	}
 	</style>
 	<section id = "product-buy-container">
-	<h2>물건 구매하기</h2>
+	<h2 style="margin-top:300px;">물건 구매하기</h2>
 	<form
 		name = "productBuyFrm"
 		action = "<%= request.getContextPath() %>/sale_product/productBuy"
@@ -61,10 +71,10 @@
 				<td><%= pb.getPrice_sum()%>원</td>
 			</tr>
 			<tr>
-				<td colspan ="8"><input name = "orderBtn" type="button" value="주문하기"/></td>
+				<th colspan ="8"><input name = "orderBtn" type="button" value="주문하기"/></th>
 			</tr>
 		</table>
-		<input type = "hidden" name = "buy_id" value = "<%=pb.getId() %>">
+		<input type = "hidden" name = "buy_id" value = "<%=member.getId() %>">
 		<input type = "hidden" name = "product_code" value = "<%=pb.getProduct_code() %>">
 		<input type = "hidden" name = "shipping_fee" value = "<%=pb.getShipping_fee() %>">
 		<input type = "hidden" name = "product_buy_count" value = "<%=pb.getProduct_buy_count() %>">
@@ -103,3 +113,9 @@ $("[name=orderBtn]").on('click',function(){
     return false;
 });
 </script>
+<%}else{%>
+	<script>
+	alert('로그인 후 이용 가능합니다.');
+	location.href='<%=request.getContextPath()%>/memberLogin';
+	</script>
+<%}%>
