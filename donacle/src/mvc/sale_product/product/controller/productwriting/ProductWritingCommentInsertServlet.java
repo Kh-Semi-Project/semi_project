@@ -55,8 +55,8 @@ public class ProductWritingCommentInsertServlet extends HttpServlet {
 		int result = ps.InsertProductComment(pwq);
 		System.out.println(result > 0 ? "댓글 등록 성공":"댓글 등록 실패");
 		// 3. 응답처리
-		String location = request.getContextPath() + "/sale_product/ProductWritingView?code="+product_writing_code;
-		
+		String location = request.getHeader("Referer");
+	
 		response.sendRedirect(location);
 	}
 

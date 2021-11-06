@@ -38,7 +38,7 @@ index++;
 			<td rowspan="2"><%=index %></td>
 			<td rowspan ="2"><img src="<%=pb.getProduct_img() %>" width="120px" height="150px"/></td>
 			<td><%=pb.getProduct_name() %></td>
-			<td rowspan="2"><%=pb.getId()%></td>
+			<td rowspan="2"><%=pb.getId()==null ? "<b>탈퇴회원</b>" : pb.getId()%></td>
 			<td rowspan="2"><%=pb.getPrice_sum()%>원</td>
 			<td rowspan="2"><%=pb.getProduct_buy_date()%></td>
 			<td rowspan="2">

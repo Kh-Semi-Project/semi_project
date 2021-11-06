@@ -160,7 +160,8 @@
 <%
 if(pwqlist != null && !pwqlist.isEmpty()){
 	String id_comment_parent = "";
-	for(ProductWritingQuestion pwq : pwqlist){ 
+	for(ProductWritingQuestion pwq : pwqlist){
+		pwq.setId(pwq.getId() == null ? "null" :pwq.getId());
 		int check = 0;
 		if(pwq.getComment_level() == 1){
 			if("y".equals(pwq.getComment_secret())){
@@ -175,7 +176,7 @@ if(pwqlist != null && !pwqlist.isEmpty()){
 			<%-- 댓글 --%>
 			<tr class="level1">
 				<td width="500px">
-					<sub class="comment-writer"><%= pwq.getId() %></sub>
+					<sub class="comment-writer"><%= pwq.getId().equals("null") ? "<b>탈퇴회원</b>" : pwq.getId() %></sub>
 					<sub class="comment-date"><%= pwq.getComment_date() %></sub>
 					<br />
 					<%-- 댓글 내용 --%><!-- 댓글 쓴 본인/판매자는 댓글 확인 가능 -->
@@ -203,7 +204,7 @@ if(pwqlist != null && !pwqlist.isEmpty()){
 			<%-- 대댓글(답글) --%>
 			<tr class="level2">
 				<td>
-					<sub class="comment-writer"><%= pwq.getId() %></sub>
+					<sub class="comment-writer"><%= pwq.getId().equals("null") ? "<b>탈퇴회원</b>" : pwq.getId() %></sub>
 					<sub class="comment-date"><%= pwq.getComment_date() %></sub>
 					<br />
 					<%-- 댓글 내용 --%>
