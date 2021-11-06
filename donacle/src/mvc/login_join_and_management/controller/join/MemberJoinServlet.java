@@ -41,6 +41,7 @@ public class MemberJoinServlet extends HttpServlet {
 		String password = MvcUtils.getEncryptedPassword(request.getParameter("password"));
 		String name = request.getParameter("name");
 		String email = request.getParameter("emailId");
+		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
 		String _birthday = request.getParameter("birthday");
 		String kind = request.getParameter("kind") ;
@@ -63,7 +64,7 @@ public class MemberJoinServlet extends HttpServlet {
 			birthday = Date.valueOf(format);
 		}
 		
-		Member member = new Member(id, password, name, email, gender, birthday, kind, null, null);
+		Member member = new Member(id, password, name, email, phone, gender, birthday, kind, null, null);
 		
 		if(MemberService.MEMBER_KIND_CUSTOMER.equals(kind)) {
 			

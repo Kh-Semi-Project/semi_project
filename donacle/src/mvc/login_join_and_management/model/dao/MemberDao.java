@@ -45,6 +45,7 @@ public class MemberDao {
 				member.setPassword(rset.getString("password"));
 				member.setName(rset.getString("name"));
 				member.setEmail(rset.getString("email"));
+				member.setPhone(rset.getString("phone"));
 				member.setGender(rset.getString("gender"));
 				member.setBirthday(rset.getDate("birthday"));
 				member.setKind(rset.getString("kind"));
@@ -98,9 +99,10 @@ public class MemberDao {
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4, member.getEmail());
-			pstmt.setString(5, member.getGender());
-			pstmt.setDate(6, member.getBirthday());
-			pstmt.setString(7, member.getKind());
+			pstmt.setString(5, member.getPhone());
+			pstmt.setString(6, member.getGender());
+			pstmt.setDate(7, member.getBirthday());
+			pstmt.setString(8, member.getKind());
 			
 			result = pstmt.executeUpdate();
 
@@ -146,9 +148,10 @@ public class MemberDao {
 			
 			pstmt.setString(1, member.getName());
 			pstmt.setString(2, member.getEmail());
-			pstmt.setString(3, member.getGender());
-			pstmt.setDate(4, member.getBirthday());
-			pstmt.setString(5, member.getId());
+			pstmt.setString(3, member.getPhone());
+			pstmt.setString(4, member.getGender());
+			pstmt.setDate(5, member.getBirthday());
+			pstmt.setString(6, member.getId());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -324,8 +327,9 @@ public class MemberDao {
 				member.setPassword(null);
 				member.setName(rset.getString("name"));
 				member.setEmail(rset.getString("email"));
-				member.setGender(rset.getString("gender"));
+				member.setPhone(rset.getString("phone"));
 				member.setBirthday(rset.getDate("birthday"));
+				member.setGender(rset.getString("gender"));
 				member.setKind(rset.getString("kind"));
 				member.setJoinDate(rset.getDate("join_date"));
 				

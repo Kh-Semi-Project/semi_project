@@ -29,6 +29,11 @@
 					<%= memberById.getEmail()%>
 			</tr>
 			<tr>
+				<th>핸드폰 번호</th>
+				<td>	
+					<%= memberById.getPhone()%>
+			</tr>
+			<tr>
 				<th>성별 </th>
 				<td>
 					<%= MemberService.MEMBER_GENDER_MALE.equals(memberById.getGender()) ? "남" : "여" %> 

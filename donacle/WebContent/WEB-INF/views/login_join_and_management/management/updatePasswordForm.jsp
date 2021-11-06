@@ -13,6 +13,7 @@
 		<div class="content">
 		<h4>새 비밀번호</h4>
 		<input type="password" id = "newPass" name = "newPass" placeholder = "새 비밀번호" oninput = "checkNewPassword()"/>
+		<input type="hidden" id = "oldPass" value = "<%=findMember.getPassword()%>" />
 		</div>
 		<div id="newPassMsg"></div>
 		<div class="content">

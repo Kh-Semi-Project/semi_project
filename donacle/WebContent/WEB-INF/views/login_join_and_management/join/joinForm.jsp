@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login_join_and_management/join.css">
 <!--  <script type="text/javascript" src="<%=request.getContextPath()%>/js/member.js"></script> `-->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<form name="memberJoinFrm" action="<%= request.getContextPath() %>/memberJoin" method="POST">
-	<div class="container">
+<form name="memberJoinFrm" action="<%= request.getContextPath() %>/memberJoin" method="POST">
+<div class="container">
 	<div class = "joinForm">
 		<h2>회원가입</h2>
 			<div class = "content">
@@ -14,21 +14,25 @@
 			<input type="text" placeholder="아이디" id="id" name="id" oninput = "checkId()"><br />
 			</div>
 			<div id="idMsg"></div>
+			
 			<div class = "content">
 			<h4>비밀번호</h4>
 				<input type="password" placeholder = "비밀번호" name="password" id="password" oninput = "checkPassword()" ><br>
 			</div>
 			<div id="passMsg"></div>
+			
 			<div class = "content">
 			<h4>비밀번호 확인</h4>
 					<input type="password" placeholder = "비밀번호 확인" id="checkPass" oninput = "checkPassword()" ><br>
 			</div>  
 			<div id="checkPassMsg"></div>
+			
 			<div class = "content">
 			<h4>이름</h4>
 				<input type="text"  placeholder = "이름" name="name" id="name" ><br>
 			</div>
 			<div id="nameMsg"></div>
+			
 			<div class = "content">
 			<h4>이메일</h4>
 					<input type="text" placeholder = "이메일" name="emailId" id="email">
@@ -37,11 +41,19 @@
 					<input type="button" value="인증하기" id="sendKey" name="sendKey" style = "display:none;"/><br />
 			</div>
 			<div id="emailMsg"></div>
+			
+			<div class = "content">
+			<h4>핸드폰 번호</h4>
+				<input type="text"  placeholder = "핸드폰 번호 ( - 없이 입력)" name="phone" id="phone" ><br>
+			</div>
+			<div id="phoneMsg"></div>
+			
 			<div class = "content">
 			<h4>생년월일</h4>
 				<input type="text" placeholder= "생년월일 (ex)19940803)"name="birthday" id="birthday" ><br />
 			</div> 
 			<div id="birthdayMsg"></div>
+			
 			<div class="content">
 			<h4>성별</h4>
 				<select name="gender" id="gender">
@@ -49,6 +61,7 @@
 					<option value="F">여자</option>
 				</select>
 			</div>
+			
 			<div class="content">
 				<h4>가입 구분</h4>
 				<select name="kind" id="kind">
@@ -68,6 +81,7 @@
 			</div>
 			</div>
 			<div id="addressMsg"></div>
+			
 			<div class="content" id = "btnContent">
 			<input type="submit" value="가입" class = "signupBtn" >
 			<input type="button" value="취소" class = "cancelBtn" onclick = "location.href = '<%=request.getContextPath()%>/'"/>

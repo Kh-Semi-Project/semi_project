@@ -15,7 +15,6 @@ import org.apache.commons.io.IOUtils;
 
 import com.oreilly.servlet.MultipartRequest;
 
-import mvc.product_review.common.FileUploadPath;
 import mvc.product_review.common.MvcFileRenamePolicy;
 import mvc.product_review.common.model.service.AttachService;
 import mvc.product_review.common.vo.Attach;
