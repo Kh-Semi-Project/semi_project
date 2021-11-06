@@ -38,7 +38,7 @@
                         <% if(MemberService.MEMBER_KIND_ADMIN.equals(loginMember.getKind())) { %>
                         <ul><span><img src="https://i.ibb.co/vwMbtvG/door.png"><%=loginMember.getName() %>님</span></ul>
                         <ul><span onclick = "location.href='<%=request.getContextPath()%>/admin/memberList'"><img src="https://i.ibb.co/THQ11bq/user.png">회원관리</span></ul>
-                        <ul><span onclick = "location.href='<%=request.getContextPath()%>/sale_product/productWritingAdminCheckList'"><img src="https://i.ibb.co/THQ11bq/user.png">승인요청관리</span></ul>
+                        <ul><span onclick = "location.href='<%=request.getContextPath()%>/sale_product/productWritingAdminCheckList'"><img src="https://i.ibb.co/1Qmrw5Z/approve.png">승인요청관리</span></ul>
                         <ul><span onclick = "location.href='<%=request.getContextPath()%>/member/memberLogout'"><img src="https://i.ibb.co/h8XQfKD/add-user-1.png">로그아웃</span></ul>
                         <% }else if(MemberService.MEMBER_KIND_SELLER.equals(loginMember.getKind())){%>
                         <ul><span><img src="https://i.ibb.co/vwMbtvG/door.png"><%=loginMember.getName() %>님</span></ul>

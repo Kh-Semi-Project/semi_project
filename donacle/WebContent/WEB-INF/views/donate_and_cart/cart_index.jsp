@@ -82,7 +82,7 @@ td {
 }
 </style>
 
-<section id = "cart">
+<section id = "cart" <%if(cl.size()>5){%>style="height: auto;<%}%>">
 <div id="cart_title" style="background:#f7f3d8; text-align:center; width: 1300px; height:180px; padding-top:50px; margin-top:200px; ">
      	<h1 class="subVeiewTitle">장 바 구 니</h1>
      	

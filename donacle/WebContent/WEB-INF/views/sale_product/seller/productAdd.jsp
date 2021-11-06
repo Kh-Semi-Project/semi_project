@@ -37,7 +37,7 @@
 	Member member = (Member) session.getAttribute("loginMember");
 %>
 <%if(member != null){ %>
-	<section id = "product-add-container" style="margin-top:200px;">
+	<section id = "product-add-container" style="margin-top:200px; height: auto;">
 	<h2>물건 추가</h2>
 	<form
 		name = "productAddFrm"

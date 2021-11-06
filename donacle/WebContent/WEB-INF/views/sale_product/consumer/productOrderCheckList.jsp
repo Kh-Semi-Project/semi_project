@@ -22,7 +22,7 @@ input[name=productOrderCheckBtn]:hover, input[name=productOrderCancelBtn]:hover{
 <%if(member != null){ %>
 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <h2>주문 리스트 확인</h2>
-<section id="product-order-container">
+<section id="product-order-container" style="<%if(pblist.size() > 5){%>height: auto;<%}%>">
 	<table id="tbl-board">
 		<tr>
 			<th>번호</th>

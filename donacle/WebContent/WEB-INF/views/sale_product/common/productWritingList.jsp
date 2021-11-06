@@ -36,7 +36,7 @@
 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <%@ include file="/WEB-INF/views/sale_product/common/productListMenu.jsp" %>
 
-	<section id = "product-List-container">
+	<section id = "product-List-container" style="height: auto;">
 	<h2 style="padding-top:20px;">조회수가 높은 Top3 제품</h2>
 		<!--조회수가 높은 제품 3개 -->
 <% if(!toplist.isEmpty()){%>
