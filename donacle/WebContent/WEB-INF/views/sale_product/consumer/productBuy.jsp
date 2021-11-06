@@ -97,8 +97,8 @@
 		<input type = "hidden" name = "price_sum" value = "<%= pb.getPrice_sum()%>">
 
 	</form>
-	<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 	</section>
+	<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 <script>
 //order
 $("[name=orderBtn]").on('click',function(){
