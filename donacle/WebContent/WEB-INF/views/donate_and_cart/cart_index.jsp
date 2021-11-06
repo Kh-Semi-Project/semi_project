@@ -81,14 +81,13 @@ td {
 	height: 100px;
 }
 </style>
-
+<%if(member != null){ %>
 <section id = "cart" <%if(cl.size()>5){%>style="height: auto;<%}%>">
 <div id="cart_title" style="background:#f7f3d8; text-align:center; width: 1300px; height:180px; padding-top:50px; margin-top:200px; ">
      	<h1 class="subVeiewTitle">장 바 구 니</h1>
      	
         <span class="subVeiewcontent">여러분의 구매는 누군가에게 큰 힘이 됩니다. :D</span>
 </div>
-<%if(member != null){ %>
 			<table>
 				<tr>
 					<th width="100" ><input type="checkbox" id="check-all"/></th>
