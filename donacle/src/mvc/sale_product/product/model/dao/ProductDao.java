@@ -163,10 +163,7 @@ public class ProductDao {
 				pw.setProduct_code(rset.getInt("product_code"));
 				pw.setProduct_content(rset.getString("product_content")); //제품 정보
 				pw.setShipping_fee(rset.getInt("shipping_fee"));
-
-				pw.setImg_1(rset.getString("img_1"));
-				pw.setImg_2(rset.getString("img_2"));
-				pw.setImg_1(rset.getString("img_3"));
+				
 			}
 			
 		} catch (SQLException e) {
@@ -790,6 +787,7 @@ public class ProductDao {
 				pw.setRead_count(rset.getInt("read_count"));
 				pw.setProduct_writing_date(rset.getDate("product_writing_date"));
 				pw.setCategory_code(rset.getInt("category_code"));
+				pw.setProduct_code(rset.getInt("product_code"));
 				pw.setProduct_name(rset.getString("product_name"));
 				pw.setProduct_price(rset.getInt("product_price"));
 				pw.setProduct_img(rset.getString("product_img"));

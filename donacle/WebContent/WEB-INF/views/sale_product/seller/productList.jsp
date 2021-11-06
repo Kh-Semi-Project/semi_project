@@ -59,6 +59,7 @@ index++;
 				<input type = "hidden" name = "product_img" value="<%= pw.getProduct_img() %>"/>
 				<input type = "hidden" name = "product_code" value="<%=pw.getProduct_code() %>"/>
 			</form>
+			<%=pw.getProduct_code() %>
 <% if(pw.getAdmin_check() == null|| pw.getAdmin_check().length() == 0){%>
 			<input type="button" name = "productWritingBtn" id = "<%=index %>" value="작성 하기"/>
 <% }else{%>
