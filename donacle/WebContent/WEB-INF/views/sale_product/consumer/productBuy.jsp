@@ -79,7 +79,7 @@
 					<div style="margin-top:10px">
 						배송지 정보 <br/>
 						배송지 정보는 회원정보에서 수정이 가능합니다.<br/>
-						(<%=address.getZipCode()%>) <%=address.getAddress() + address.getDetailAddress()%> <br/>
+						(<%=address.getZipCode()%>) <%=address.getAddress()%>&nbsp;<%=address.getDetailAddress()%> <br/>
 						<input type="button" name = "updateAddBtn" value="정보수정" onclick="location.href='<%=request.getContextPath()%>/member/memberAddress';" style="margin-bottom:10px">
 					</div>
 				</td>

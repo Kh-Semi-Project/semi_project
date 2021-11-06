@@ -66,7 +66,7 @@ index++;
 			<td colspan ="8" style="border-top: 1px solid black; ">
 					<div style="margin-top:10px">
 					배송지 정보 <br/>
-					(<%=pb.getZip_code()%>) <%=pb.getAddress() + pb.getDetail_address()%> <br/>
+					(<%=pb.getZip_code()%>) <%=pb.getAddress()%>&nbsp;<%=pb.getDetail_address()%> <br/>
 				</div>
 			</td>
 		</tr>
