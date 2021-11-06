@@ -152,4 +152,19 @@ public class MemberService {
 		return result;
 	}
 
+	public int hasBuyList(String id) {
+		Connection conn = getConnection();
+		int result = memberDao.hasBuyList(conn, id);
+		close(conn);
+		return result;
+	}
+
+	public int hasBuyListBySeller(String id) {
+		Connection conn = getConnection();
+		int result = memberDao.hasBuyListBySeller(conn, id);
+		close(conn);
+		return result;
+	}
+
+
 }
