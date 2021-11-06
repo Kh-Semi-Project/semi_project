@@ -106,8 +106,8 @@
 		</table>
 		<input type = "hidden" name="img_url" style="display:none;"/>
 	</form>
-	<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 	</section>
+	<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 	<script>
 		//직접 입력할 수 있게 하는 부분 만들기
 		$("[name=pro_Count]").on('change', function(){

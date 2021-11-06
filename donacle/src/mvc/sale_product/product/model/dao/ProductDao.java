@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import mvc.login_join_and_management.model.vo.Address;
+import mvc.sale_product.product.model.vo.BuyAddress;
 import mvc.sale_product.product.model.vo.Product;
 import mvc.sale_product.product.model.vo.ProductBuy;
 import mvc.sale_product.product.model.vo.ProductWriting;
@@ -268,11 +269,11 @@ public class ProductDao {
 	}
 
 	//구매했던 제품 출력하기
-	public List<ProductBuy> selectProductBuyList(Connection conn, String id) {
+	public List<BuyAddress> selectProductBuyList(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectProductBuyList");
-		List<ProductBuy> productBuyList = new ArrayList<>();
+		List<BuyAddress> productBuyList = new ArrayList<>();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -280,7 +281,7 @@ public class ProductDao {
 			
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				ProductBuy pb = new ProductBuy();
+				BuyAddress pb = new BuyAddress();
 				pb.setProduct_img(rset.getString("product_img"));
 				pb.setProduct_code(rset.getInt("product_code"));
 				pb.setProduct_name(rset.getString("product_name"));
@@ -292,6 +293,9 @@ public class ProductDao {
 				pb.setBuy_writing_yn(rset.getString("product_buy_writing_yn"));
 				pb.setProduct_shipping_status(rset.getString("PRODUCT_SHIPPING_STATUS"));
 				pb.setPrice_sum(rset.getInt("PRICE_SUM"));
+				pb.setAddress(rset.getString("address"));
+				pb.setDetail_address(rset.getString("detail_address"));
+				pb.setZip_code(rset.getString("zip_code"));
 				
 				productBuyList.add(pb);
 			}
@@ -503,11 +507,11 @@ public class ProductDao {
 	}
 
 	//주문 리스트 출력
-	public List<ProductBuy> selectProductOrderList(Connection conn, String id) {
+	public List<BuyAddress> selectProductOrderList(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("productOrderList");
-		List<ProductBuy> productBuyList = new ArrayList<>();
+		List<BuyAddress> productBuyList = new ArrayList<>();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -515,7 +519,7 @@ public class ProductDao {
 			
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				ProductBuy pb = new ProductBuy();
+				BuyAddress pb = new BuyAddress();
 				pb.setProduct_img(rset.getString("product_img"));
 				pb.setId(rset.getString("id")); // id는 구매자, id_1는 판매자
 				pb.setProduct_code(rset.getInt("product_code"));
@@ -528,6 +532,9 @@ public class ProductDao {
 				pb.setProduct_shipping_status(rset.getString("PRODUCT_SHIPPING_STATUS"));
 				pb.setPrice_sum(rset.getInt("PRICE_SUM"));
 				
+				pb.setAddress(rset.getString("address"));
+				pb.setDetail_address(rset.getString("detail_address"));
+				pb.setZip_code(rset.getString("zip_code"));
 				productBuyList.add(pb);
 			}
 			
@@ -803,6 +810,7 @@ public class ProductDao {
 		return list;
 	}
 
+	// 주문하기 위해 구매자 주소 가져오기
 	public Address MemberAddress(Connection conn, String cos_id) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -816,7 +824,7 @@ public class ProductDao {
 			if(rset.next()) {
 				address.setAddress(rset.getString("ADDRESS"));
 				address.setDetailAddress(rset.getString("DETAIL_ADDRESS"));
-				address.setZipCode("ZIP_CODE");
+				address.setZipCode(rset.getString("ZIP_CODE"));
 			}
 			
 		} catch (SQLException e) {

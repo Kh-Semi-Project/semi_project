@@ -11,6 +11,7 @@ import java.util.List;
 
 import mvc.sale_product.product.model.dao.ProductDao;
 import mvc.login_join_and_management.model.vo.Address;
+import mvc.sale_product.product.model.vo.BuyAddress;
 import mvc.sale_product.product.model.vo.Product;
 import mvc.sale_product.product.model.vo.ProductBuy;
 import mvc.sale_product.product.model.vo.ProductWriting;
@@ -78,9 +79,9 @@ public class ProductService {
 	}
 
 	//구매했던 제품 출력하기
-	public List<ProductBuy> ProductBuyList(String id) {
+	public List<BuyAddress> ProductBuyList(String id) {
 		Connection conn = getConnection();
-		List<ProductBuy> productBuyList = pwdao.selectProductBuyList(conn, id);
+		List<BuyAddress> productBuyList = pwdao.selectProductBuyList(conn, id);
 		close(conn);
 		return productBuyList;
 	}
@@ -155,9 +156,9 @@ public class ProductService {
 	}
 
 	//제품 주문 리스트
-	public List<ProductBuy> productOrderList(String id) {
+	public List<BuyAddress> productOrderList(String id) {
 		Connection conn = getConnection();
-		List<ProductBuy> productBuyList = pwdao.selectProductOrderList(conn, id);
+		List<BuyAddress> productBuyList = pwdao.selectProductOrderList(conn, id);
 		close(conn);
 		return productBuyList;
 	}

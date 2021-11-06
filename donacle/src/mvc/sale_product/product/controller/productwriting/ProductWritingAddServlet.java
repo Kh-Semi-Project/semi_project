@@ -32,23 +32,25 @@ public class ProductWritingAddServlet extends HttpServlet {
 		//session에서 가져오기 필요
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
+		System.out.println("member#"+member);
 		if(member == null) {
 			String location = request.getContextPath() + "/";
 			
 			response.sendRedirect(location);
+		}else {
+			String id = member.getId(); // 아이디 가져오기 필요
+			System.out.println("id@"+id);
+			
+			// 2. 업무로직
+			int result = ps.ProductWritingAdd(product_code,id);
+			System.out.println(result > 0 ? "성공": "실패");
+			
+			// 3. 응답처리
+			// 후에 id는 변경 필요
+			String location = request.getContextPath() + "/sale_product/productList?id="+id;
+			
+			response.sendRedirect(location);
 		}
-		String id = member.getId(); // 아이디 가져오기 필요
-		System.out.println("id@"+id);
-		
-		// 2. 업무로직
-		int result = ps.ProductWritingAdd(product_code,id);
-		System.out.println(result > 0 ? "성공": "실패");
-		
-		// 3. 응답처리
-		// 후에 id는 변경 필요
-		String location = request.getContextPath() + "/sale_product/productList?id="+id;
-		
-		response.sendRedirect(location);
 	}
 
 }

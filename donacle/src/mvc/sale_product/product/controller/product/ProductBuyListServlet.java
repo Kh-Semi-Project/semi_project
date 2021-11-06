@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import mvc.login_join_and_management.model.vo.Address;
 import mvc.login_join_and_management.model.vo.Member;
 import mvc.sale_product.product.model.service.ProductService;
+import mvc.sale_product.product.model.vo.BuyAddress;
 import mvc.sale_product.product.model.vo.ProductBuy;
 
 /**
@@ -30,20 +32,20 @@ public class ProductBuyListServlet extends HttpServlet {
 		// 1. 사용자입력 값처리
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
-		if(member == null) {
+		if(member == null) { // 로그아웃이 되면 메인 화면으로 이동
 			String location = request.getContextPath() + "/";			
 			response.sendRedirect(location);
+		}else {
+			String id = member.getId(); // 아이디 가져오기 필요
+			// 2. 업무로직
+			List<BuyAddress> ProductBuyList = pws.ProductBuyList(id); // 구매 제품 가져오기
+			System.out.println("구매 제품 리스트" + ProductBuyList);
+			// 3. 응답처리
+			request.setAttribute("ProductBuyList", ProductBuyList);
+			request
+				.getRequestDispatcher("/WEB-INF/views/sale_product/consumer/productOrderCheckList.jsp")
+				.forward(request, response);
 		}
-		String id = member.getId(); // 아이디 가져오기 필요
-		// 2. 업무로직
-		List<ProductBuy> ProductBuyList = pws.ProductBuyList(id);
-		System.out.println("구매 제품 리스트" + ProductBuyList);
-		
-		// 3. 응답처리
-		request.setAttribute("ProductBuyList", ProductBuyList);
-		request
-			.getRequestDispatcher("/WEB-INF/views/sale_product/consumer/productOrderCheckList.jsp")
-			.forward(request, response);
 	}
 
 }

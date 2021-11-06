@@ -44,31 +44,31 @@ public class ProductBuyInfoServlet extends HttpServlet {
 			String location = request.getContextPath() + "/";
 			
 			response.sendRedirect(location);
+		}else {
+			String cos_id = member.getId(); // 아이디 가져오기 필요
+			int sum_price = Integer.parseInt(request.getParameter("sum_price"));
+			int product_buy_price = (int)(sum_price * 0.9);//제품 가격의 90%만 저장
+			int product_donate_price = sum_price - product_buy_price;//제품 가격의 10% 후원 금액으로 저장
+			
+			// 2. 업무로직
+			ProductBuy pb = new ProductBuy();
+			pb.setProduct_code(product_code);
+			pb.setProduct_buy_count(product_buy_count);
+			pb.setProduct_buy_price(product_buy_price);
+			pb.setPrice_sum(product_buy_price + product_donate_price);
+			pb.setProduct_donate_price(product_donate_price);
+			pb.setId(id);	
+			ProductBuy productBuy = pws.ProductBuyInfo(pb); // 제품 구매를 하고 나서 해당 제품 정보
+			mvc.login_join_and_management.model.vo.Address address = pws.MemberAddress(cos_id);
+			
+			// 3. 응답처리
+			request.setAttribute("ProductBuyInfo", productBuy);
+			request.setAttribute("address", address);
+			System.out.println("productBuyInfo@servlet@"+productBuy);
+			request
+				.getRequestDispatcher("/WEB-INF/views/sale_product/consumer/productBuy.jsp")
+				.forward(request,  response);
 		}
-		String cos_id = member.getId(); // 아이디 가져오기 필요
-		
-		int sum_price = Integer.parseInt(request.getParameter("sum_price"));
-		int product_buy_price = (int)(sum_price * 0.9);//제품 가격의 90%만 저장
-		int product_donate_price = sum_price - product_buy_price;//제품 가격의 10% 후원 금액으로 저장
-		
-		// 2. 업무로직
-		ProductBuy pb = new ProductBuy();
-		pb.setProduct_code(product_code);
-		pb.setProduct_buy_count(product_buy_count);
-		pb.setProduct_buy_price(product_buy_price);
-		pb.setPrice_sum(product_buy_price + product_donate_price);
-		pb.setProduct_donate_price(product_donate_price);
-		pb.setId(id);	
-		ProductBuy productBuy = pws.ProductBuyInfo(pb); // 제품 구매를 하고 나서 해당 제품 정보
-		mvc.login_join_and_management.model.vo.Address address = pws.MemberAddress(cos_id);
-		
-		// 3. 응답처리
-		request.setAttribute("ProductBuyInfo", productBuy);
-		request.setAttribute("address", address);
-		System.out.println("productBuyInfo@servlet@"+productBuy);
-		request
-			.getRequestDispatcher("/WEB-INF/views/sale_product/consumer/productBuy.jsp")
-			.forward(request,  response);
 	}
 	//장바구니 쪽에서 주문 클릭했을 때 get 방식 추가
 

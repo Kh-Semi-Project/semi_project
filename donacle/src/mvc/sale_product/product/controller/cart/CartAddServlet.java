@@ -29,22 +29,27 @@ public class CartAddServlet extends HttpServlet {
 		int product_buy_count = Integer.parseInt(request.getParameter("product_buy_count"));
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
-		String id = member.getId(); // 아이디 가져오기 필요
-		
-		// 2. 업무로직
-		// 장바구니 번호 가져오기
-		int cartNo = pws.selectCartNo(id);
-		System.out.println("cartAdd@"+cartNo);
-		int result = pws.insertCart(cartNo,product_code,product_buy_count);
-		System.out.println("result@"+result);
-		//code보내야됨
-		//category -> /sale_product/productwritingList?category=0
-		String location = request.getHeader("Referer");
-		String msg = result > 0 ? "1" : "0";
-		session.setAttribute("msg3", msg);
-//		String location = request.getContextPath() + "/sale_product/productwritingList?category=0";
-		System.out.println("location@"+location);
-		response.sendRedirect(location);
+		System.out.println("cartAddServlet@member@"+member);
+		if(member == null) {
+			String location = request.getContextPath() + "/";
+			response.sendRedirect(location);
+		}else {
+			String id = member.getId(); // 아이디 가져오기 필요
+			// 2. 업무로직
+			// 장바구니 번호 가져오기
+			int cartNo = pws.selectCartNo(id);
+			System.out.println("cartAdd@"+cartNo);
+			int result = pws.insertCart(cartNo,product_code,product_buy_count);
+			System.out.println("result@"+result);
+			//code보내야됨
+			//category -> /sale_product/productwritingList?category=0
+			String location = request.getHeader("Referer");
+			String msg = result > 0 ? "1" : "0";
+			session.setAttribute("msg3", msg);
+	//		String location = request.getContextPath() + "/sale_product/productwritingList?category=0";
+			System.out.println("location@"+location);
+			response.sendRedirect(location);
+		}
 		
 	}
 

@@ -30,22 +30,24 @@ public class ProductShppingStatusServlet extends HttpServlet {
 		// test버전
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
+		System.out.println("member@"+member);
 		if(member == null) {
 			String location = request.getContextPath() + "/";
 			
 			response.sendRedirect(location);
+		}else {
+			String id = member.getId(); // 아이디 가져오기 필요
+			
+			
+			// 2. 업무 로직
+			int result = ps.updateproductShppingStatus(product_buy_code);
+			System.out.println(result > 0 ? "배송시작 성공" : "배송시작 실패");
+			
+			// 3. 응답 처리
+			String location = request.getContextPath() + "/sale_product/productOrderList?id="+id;
+			
+			response.sendRedirect(location);
 		}
-		String id = member.getId(); // 아이디 가져오기 필요
-		
-		
-		// 2. 업무 로직
-		int result = ps.updateproductShppingStatus(product_buy_code);
-		System.out.println(result > 0 ? "배송시작 성공" : "배송시작 실패");
-		
-		// 3. 응답 처리
-		String location = request.getContextPath() + "/sale_product/productOrderList?id="+id;
-		
-		response.sendRedirect(location);
 	
 	}
 
