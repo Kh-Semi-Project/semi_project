@@ -25,6 +25,7 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 			<tbody>
 				<%
 				for (Member member : list) {
+					if(!"admin".equals(member.getId())) {
 				%>
 				<tr>
 					<td><%=member.getId()%></td>
@@ -50,6 +51,7 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 				</tr>
 
 				<%
+					}
 				}
 				%>
 
