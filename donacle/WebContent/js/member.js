@@ -120,6 +120,7 @@ $(document).ready(function() {
 
 	$("[name=memberJoinFrm]").submit(function() {
 		var name = $('#name').val();
+		var phone = $('#phone').val();
 		var birthday = $('#birthday').val();
 		var detailAddress = $('#detailAddress').val();
 
@@ -134,6 +135,13 @@ $(document).ready(function() {
 				$('#nameMsg').hide();
 			}
 
+			if (phone == '') {
+				$('#phoneMsg').text("전화번호는 필수입력값입니다.").css("color", "red").focus();
+				return false;
+			} else {
+				$('#phoneMsg').hide();
+			}
+			
 			if (birthday == '') {
 				$('#birthdayMsg').text("생년월일은 필수입력값입니다.").css("color", "red").focus();
 				return false;
@@ -149,6 +157,7 @@ $(document).ready(function() {
 					$('#addressMsg').hide();
 				}
 			}
+			
 			return true;
 		} else {
 			alert("아이디, 비밀번호, 이메일 인증 절차를 확인해주세요.");
@@ -216,13 +225,15 @@ function checkPassword() {
 
 
 function checkNewPassword() {
+	var oldPass = $('#oldPass').val();
 	var newPass = $('#newPass').val();
 	var checkNewPass = $('#checkNewPass').val();
+	
 	if (newPass == "") {
 		$('#newPassMsg').text("비밀번호를 입력해주세요.").css('color', 'red');
 	} else if (/^[a-zA-Z0-9!@#$$%^&*()]{4,}/.test(newPass) == false) {
 		$('#newPassMsg').text("비밀번호는 최소 4자리 이상이어야 합니다.").css('color', 'red');
-	} else {
+	} else {	
 		$('#newPassMsg').text("사용 가능한 비밀번호입니다.").css('color', 'green');
 	}
 	if (newPass != checkNewPass) {

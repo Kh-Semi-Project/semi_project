@@ -13,6 +13,7 @@ public class Member implements Serializable {
 	private String password;
 	private String name;
 	private String email;
+	private String phone;
 	private String gender;
 	private Date birthday;
 	private String kind;
@@ -25,13 +26,31 @@ public class Member implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String id, String password, String name, String email, String gender, Date birthday, String kind,
-			Date joinDate, Address address) {
+	
+	public Member(String id, String password, String name, String email, String phone, String gender, Date birthday,
+			String kind, Date joinDate) {
 		super();
 		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.email = email;
+		this.phone = phone;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.kind = kind;
+		this.joinDate = joinDate;
+	}
+
+	 
+
+	public Member(String id, String password, String name, String email, String phone, String gender, Date birthday,
+			String kind, Date joinDate, Address address) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
 		this.gender = gender;
 		this.birthday = birthday;
 		this.kind = kind;
@@ -39,18 +58,6 @@ public class Member implements Serializable {
 		this.address = address;
 	}
 
-	public Member(String id, String password, String name, String email, String gender, Date birthday, String kind,
-			Date joinDate) {
-		super();
-		this.id = id;
-		this.password = password;
-		this.name = name;
-		this.email = email;
-		this.gender = gender;
-		this.birthday = birthday;
-		this.kind = kind;
-		this.joinDate = joinDate;
-	}
 
 	public String getId() {
 		return id;
@@ -124,11 +131,25 @@ public class Member implements Serializable {
 		this.address = address;
 	}
 
+	
+	
+	public String getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email + ", gender="
-				+ gender + ", birthday=" + birthday + ", kind=" + kind + ", joinDate=" + joinDate + ", address="
-				+ address + "]";
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email + ", phone="
+				+ phone + ", gender=" + gender + ", birthday=" + birthday + ", kind=" + kind + ", joinDate=" + joinDate
+				+ ", address=" + address + "]";
 	}
+
+
 
 }

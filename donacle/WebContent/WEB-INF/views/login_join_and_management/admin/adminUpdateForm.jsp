@@ -23,6 +23,10 @@
 				<input type="email" placeholder="abc@xyz.com" name="email" id="email" value = "<%= memberById.getEmail()%>"><br>
 			</div>
 			<div class="content">
+			<h4>핸드폰 번호</h4>
+				<input type="text" placeholder = "핸드폰 번호 ( - 없이 입력 바랍니다.)" name="phone" id="phone" value = "<%= memberById.getPhone()%>" >
+			</div>
+			<div class="content">
 			<h4>성별</h4>
 				<select name="gender" id="gender">
 					<option value="M" <%=MemberService.MEMBER_GENDER_MALE.equals(memberById.getGender()) ? "selected" : "" %>>남자</option>

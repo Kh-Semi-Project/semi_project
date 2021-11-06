@@ -39,6 +39,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
 		String gender = request.getParameter("gender");
 		String _birthday = request.getParameter("birthday");
 		String kind = request.getParameter("kind");
@@ -60,7 +61,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			birthday = Date.valueOf(format);
 		}
 		
-		Member member = new Member(id, null, name, email, gender, birthday, kind, null, null);
+		Member member = new Member(id, null, name, email, phone, gender, birthday, kind, null, null);
 		
 		
 		int result = memberService.updateMember(member);

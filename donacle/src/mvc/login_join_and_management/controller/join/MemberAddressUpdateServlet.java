@@ -53,7 +53,7 @@ public class MemberAddressUpdateServlet extends HttpServlet {
 			
 			response.sendRedirect(request.getContextPath() + "/member/memberAddress");
 		} else {
-			msg = "회원 정보 수정에 실패했습니다. 지속적인 오류 발생 시 관리자에게 문의 바랍니다.";
+			msg = "배송지 정보 수정에 실패했습니다. 지속적인 오류 발생 시 관리자에게 문의 바랍니다.";
 			session.setAttribute("msg", msg);
 			response.sendRedirect(request.getContextPath() + "/member/addressUpdate");
 		}
