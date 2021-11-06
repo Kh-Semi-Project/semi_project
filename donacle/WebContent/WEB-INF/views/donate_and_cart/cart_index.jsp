@@ -1,19 +1,17 @@
-<%@page import="mvc.login_join_and_management.model.vo.Member"%>
+import="mvc.login_join_and_management.model.vo.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="mvc.donate_and_cart.cart.model.vo.CartList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% 
+<%
 	String msg2 = (String) request.getAttribute("msg");
 	Member member = (Member) request.getAttribute("loginMember");
 	List<CartList> cl = (List<CartList>) request.getAttribute("cartList");
 %>
-
 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <title>Cart</title>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <style>
-
 @font-face {
   font-family: 'Pretendard-ExtraLight';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraLight.woff') format('woff');
@@ -21,9 +19,8 @@
   font-style: normal;
 }
 hr {
-	color: #ececec;
+	color: #ECECEC;
 }
-
 h1 {
 	font-family: 'Pretendard-ExtraLight';
 	text-align: center;
@@ -39,13 +36,13 @@ th, td {
 	border-bottom: 1px solid black;
 }
 th {
-	border-bottom: #ececec;
+	border-bottom: #ECECEC;
 	background-color: #F8F4F3;
 	padding: 5px;
 }
 td {
 	padding: 15px;
-	border-bottom: #ececec;
+	border-bottom: #ECECEC;
 	font-size: 20px;
 	text-align: center;
 }
@@ -56,7 +53,7 @@ td {
 	margin-right: 5px;
 }
 #total-price {
-	background-color: #f7f7f7;
+	background-color: #F7F7F7;
 	text-align: right;
 }
 #shopping-continue {
@@ -67,15 +64,15 @@ td {
 }
 #order {
 	padding: 5px;
-	background-color: #1c1e2d;
+	background-color: #1C1E2D;
 	color: white;
 }
 .title-l {
 	padding: 5px;
 	height: 50px;
 	text-align: left;
-	border-top: 1px solid #ececec;
-	border-bottom: 1px solid #ececec;
+	border-top: 1px solid #ECECEC;
+	border-bottom: 1px solid #ECECEC;
 }
 #shipping-price {
 	height: 100px;
@@ -98,16 +95,16 @@ td {
 					<th width="110">장바구니 삭제</th>
 					<th width="110">주문하기</th>
 				</tr>
-<% 
+<%
 	int price = 0;
-	for(CartList c : cl){ 
+	for(CartList c : cl){
 	price += (c.getProduct_price() * c.getProduct_cart_count()) + c.getShipping_fee();
 %>
 				<tr>
 					<td colspan="8" class="title-l"><span class="title-left">donacle</span></td>
 				</tr>
 				<tr>
-					<td><input type="checkbox" name="product" id="<%= c.getProduct_price()+c.getShipping_fee() %>"/></td>
+					<td><input type="checkbox" name="product" id="<%= (c.getProduct_price() * c.getProduct_cart_count()) + c.getShipping_fee() %>"/></td>
 					<td><img src="<%= c.getProduct_img() %>" alt="" width="100px" height="100px" /></td>
 					<td><%= c.getProduct_name() %></td>
 					<td><%= c.getProduct_price() %>원</td>
@@ -117,10 +114,10 @@ td {
 					<td><input type="button" value="주문하기" name="buy-btn" id = "cartList<%= c.getCartList_no()%>" /></td>
 				</tr>
 				<tr style="display:none;"><td>
-					<form 
-						id="cartList<%= c.getCartList_no() %>" 
-						name="cartList<%= c.getCartList_no() %>" 
-						action="<%= request.getContextPath() %>/CartList/delete" 
+					<form
+						id="cartList<%= c.getCartList_no() %>"
+						name="cartList<%= c.getCartList_no() %>"
+						action="<%= request.getContextPath() %>/CartList/delete"
 						method="POST">
 						<input type="hidden" name="cartListNo" id ="cartListNo" value="<%= c.getCartList_no() %>"/>
 						<input type="hidden" name="product_code" id ="product_code" value="<%= c.getProduct_code() %>"/>
@@ -142,15 +139,12 @@ td {
 					<td style="display:none;"><input type="hidden" name = "price_sum_input" value="<%=price%>"/></td>
 					<th colspan="8" id="total-price">총 결제금액(상품금액 + 배송비) : <label id = "price_sum_label">0</label>원</th>
 				</tr>
-
 			</table>
-
 <script>
 $("[name=buy-btn]").on('click',function(){
 	$("[name="+$(this).attr("id")+"]").attr('action',"<%= request.getContextPath() %>/sale_product/productBuyInfo" );
 	$("[name="+$(this).attr("id")+"]").submit();
 });
-
 $("#check-all").on('click', function(){
 	if($("#check-all").is(":checked")){
 		const number = Number($("[name=price_sum_input]").val());
@@ -162,12 +156,10 @@ $("#check-all").on('click', function(){
 		$("[name=product]").prop("checked", false);
 	}
 });
-
 $("[name=delete-btn]").on('click', function(){
-	const a = "#cartList"+$(this).attr("id");
+	const a = "[name=cartList"+$(this).attr("id")+"]";
 	$(a).submit();
 });
-
 // 체크 박스 개별 선택 / 해제 시 전체 선택 체크 박스 제어문
 $("[name=product]").on('change', function(){
 	const check_lenghts = $("input:checkbox[name=product]:checked").length;
@@ -178,14 +170,12 @@ $("[name=product]").on('change', function(){
 	else {
 		$("#price_sum_label").text(Number($("#price_sum_label").text()) - Number($price))
 	}
-
 	if(check_lenghts != <%= cl.size() %>){
 		$("input:checkbox[id=check-all]").prop("checked", false);
 	}else{
 		$("input:checkbox[id=check-all]").prop("checked", true);	
 	}
 });
-
 </script>
 <% } else { %>
 <script>
