@@ -91,8 +91,8 @@ index++;
 	<tr><td colspan="4" style="text-align:center;"><img src="<%= request.getContextPath() %>/css/sale_product/admincheck.png" alt="" width="400px;"/></td></tr>
 <%} %>
 	</table>
-<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 </section>
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 <script>
 
 	/* 

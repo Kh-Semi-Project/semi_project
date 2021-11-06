@@ -91,8 +91,8 @@ index++;
 			<td colspan="11"><input type="button" name = "productdeleteBtn" value="제품 삭제"/></td>
 		</tr>
 	</table>
-<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 </section>
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 <script>
 
 	/*

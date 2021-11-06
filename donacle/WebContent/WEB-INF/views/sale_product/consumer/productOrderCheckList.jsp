@@ -1,3 +1,4 @@
+<%@page import="mvc.sale_product.product.model.vo.BuyAddress"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,12 +7,16 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/common.css"/>  
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <%
-	List<ProductBuy> pblist = (List<ProductBuy>) request.getAttribute("ProductBuyList");
+	List<BuyAddress> pblist = (List<BuyAddress>) request.getAttribute("ProductBuyList");
 	Member member = (Member) session.getAttribute("loginMember");
 %>   
 <style>
 input[name=productOrderCancelBtn]{
 	margin : auto;
+}
+input[name=productOrderCheckBtn]:hover, input[name=productOrderCancelBtn]:hover{
+	background-color : black;
+	color : white;
 }
 </style>
 <%if(member != null){ %>
@@ -34,7 +39,7 @@ input[name=productOrderCancelBtn]{
 <!-- 사용자가 구매했던 리스트 출력 -->
 <%
 int index = 0;
-for(ProductBuy pb : pblist){
+for(BuyAddress pb : pblist){
 index++;
 %>
 		<tr>
@@ -83,19 +88,25 @@ if(pb.getProduct_shipping_status().equals("n") && pb.getProduct_receipt_yn().equ
 				<input type="checkbox" class = "" name="checkboxs" value="<%=pb.getProduct_buy_code() %>">
 <%}%>
 			</td>
-			<td><%= pb.getProduct_code()%></td>
-			<td><%= pb.getProduct_buy_code()%></td>
 		</tr>
-		<tr><!-- 주문취소 버튼 만들기 -->
-			<td colspan="9"><input type="button" name = "productOrderCancelBtn" value="주문취소"/></td>
+		<tr>
+			<td colspan="9" style="border-bottom: 1px solid black; border-top: 1px solid black; ">
+					<div style="margin-top:10px">
+						배송지 정보 <br/>
+						(<%=pb.getZip_code()%>) <%=pb.getAddress() + pb.getDetail_address()%> <br/>
+					</div>
+			</td>
 		</tr>
 <%} %>
 <% if(pblist == null|| pblist.isEmpty()){%>
 	<tr><td colspan="9"><img src="<%= request.getContextPath() %>/css/sale_product/buy.png" alt="" width="400px;"/></td></tr>
 <%}%>
+		<tr><!-- 주문취소 버튼 만들기 -->
+			<td colspan="9"><input type="button" name = "productOrderCancelBtn" value="주문취소"/></td>
+		</tr>
 	</table>
-<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 </section>
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 <script>
 
 	/*

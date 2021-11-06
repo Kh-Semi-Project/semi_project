@@ -32,6 +32,7 @@ public class ProductWritingListServlet extends HttpServlet {
 		// 1.사용자입력값처리 cPage numPerPage = 9
 		HttpSession session = request.getSession();
 		Member member = (Member)session.getAttribute("loginMember");
+		System.out.println("productwritingList@member@"+member);
 		if(member == null) {
 			String msg = "로그인 후 이용 가능합니다.";
 			request.setAttribute("msg", msg);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import mvc.login_join_and_management.model.vo.Member;
 import mvc.sale_product.product.model.service.ProductService;
+import mvc.sale_product.product.model.vo.BuyAddress;
 import mvc.sale_product.product.model.vo.ProductBuy;
 
 /**
@@ -31,25 +32,27 @@ public class ProductOrderListServlet extends HttpServlet {
 		// 1. 사용자 입력 값처리
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
+		System.out.println("member#"+member);
 		if(member == null) {
 			String location = request.getContextPath() + "/";
 			
 			response.sendRedirect(location);
+		}else {
+			String id = member.getId(); // 아이디 가져오기 필요
+			
+			// 2. 업무로직
+			List<BuyAddress> pbList = ps.productOrderList(id);
+			
+			// 3. 
+			
+			request.setAttribute("OrderProductList", pbList);
+			System.out.println("productOrderList@" + pbList);
+			
+			request.setAttribute("ProductOrderList", pbList);
+			request
+				.getRequestDispatcher("/WEB-INF/views/sale_product/seller/productOrderList.jsp")
+				.forward(request, response);
 		}
-		String id = member.getId(); // 아이디 가져오기 필요
-		
-		// 2. 업무로직
-		List<ProductBuy> pbList = ps.productOrderList(id);
-		
-		// 3. 
-		
-		request.setAttribute("OrderProductList", pbList);
-		System.out.println("productOrderList@" + pbList);
-		
-		request.setAttribute("ProductOrderList", pbList);
-		request
-			.getRequestDispatcher("/WEB-INF/views/sale_product/seller/productOrderList.jsp")
-			.forward(request, response);
 	}
 
 }

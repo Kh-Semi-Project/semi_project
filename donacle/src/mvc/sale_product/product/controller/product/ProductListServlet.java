@@ -28,19 +28,21 @@ public class ProductListServlet extends HttpServlet {
 		// 1. 사용자입력 값처리
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember");
-		if(member == null) {
+		System.out.println("member@"+member);
+		if(member == null) { // 로그아웃이 되었을 때
 			String location = request.getContextPath() + "/";
 			response.sendRedirect(location);
+		}else {
+			String id = member.getId(); // 아이디 가져오기 필요
+			// 2. 업무로직
+			List<ProductWriting> pw = ps.productList(id);
+			System.out.println("ProductList@servlet@" + pw);
+			
+			// 3. 응답처리
+			request.setAttribute("ProductList", pw);
+			request
+				.getRequestDispatcher("/WEB-INF/views/sale_product/seller/productList.jsp")
+				.forward(request,response);
 		}
-		String id = member.getId(); // 아이디 가져오기 필요
-		// 2. 업무로직
-		List<ProductWriting> pw = ps.productList(id);
-		System.out.println("ProductList@servlet@" + pw);
-		
-		// 3. 응답처리
-		request.setAttribute("ProductList", pw);
-		request
-			.getRequestDispatcher("/WEB-INF/views/sale_product/seller/productList.jsp")
-			.forward(request,response);
 	}
 }

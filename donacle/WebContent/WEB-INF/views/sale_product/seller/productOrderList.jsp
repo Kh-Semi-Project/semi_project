@@ -1,3 +1,4 @@
+<%@page import="mvc.sale_product.product.model.vo.BuyAddress"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,7 +6,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/sale_product/common.css"/>
 <script type="text/javascript" src="<%= request.getContextPath() %>/js/jquery-3.6.0.js"></script>
 <%
-	List<ProductBuy> pbs = (List<ProductBuy>) request.getAttribute("ProductOrderList");
+	List<BuyAddress> pbs = (List<BuyAddress>) request.getAttribute("ProductOrderList");
 %>
 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 <style>
@@ -27,7 +28,7 @@
 		</tr>
 <%
 int index = 0;
-for(ProductBuy pb : pbs){ 
+for(BuyAddress pb : pbs){ 
 index++;
 %>
 		<tr>
@@ -61,6 +62,14 @@ index++;
 		<tr>
 			<td><%=pb.getProduct_buy_count()%>개</td>
 		</tr>
+		<tr>
+			<td colspan ="8" style="border-top: 1px solid black; ">
+					<div style="margin-top:10px">
+					배송지 정보 <br/>
+					(<%=pb.getZip_code()%>) <%=pb.getAddress() + pb.getDetail_address()%> <br/>
+				</div>
+			</td>
+		</tr>
 <%}%>
 <%if(pbs.isEmpty()){ %>
 <tr><td colspan ="9"><img src="<%= request.getContextPath() %>/css/sale_product/orderlist.png" alt="" width="500px;"/></td></tr>
@@ -71,8 +80,8 @@ index++;
 	
 		<!-- 판매자가 배송을 시작했으면 버튼을 통해 클릭시 서버에 (판매자는 물건을 출발시켰다는) 정보를 전달,
 			 사용자가 주문확인 페이지에서 확인 가능하게 하기 위함 -->
-<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 </section>
+<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 <script>
 	/* 
 		리스트 출력 후, 판매자가 배송출발 버튼을 클릭하면 서버로 정보 전달

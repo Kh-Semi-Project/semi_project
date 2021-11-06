@@ -35,10 +35,11 @@
 	input[name=orderBtn]{
 		width : 100px;
 	}
-	input[name=orderBtn]:hover{
+	input[name=orderBtn]:hover,input[name=updateAddBtn]:hover{
 		background-color : black;
 		color : white;
 	}
+
 	</style>
 	<section id = "product-buy-container">
 	<h2 style="margin-top:300px;">물건 구매하기</h2>
@@ -72,6 +73,17 @@
 				<td><%=pb.getProduct_donate_price() %>원</td> <!-- 후원되는 금액 -->
 				<td><%= pb.getPrice_sum()%>원</td>
 			</tr>
+			<!-- 주소 추가 -->
+			<tr>
+				<td colspan ="8" style="border-top: 1px solid black; ">
+					<div style="margin-top:10px">
+						배송지 정보 <br/>
+						배송지 정보는 회원정보에서 수정이 가능합니다.<br/>
+						(<%=address.getZipCode()%>) <%=address.getAddress() + address.getDetailAddress()%> <br/>
+						<input type="button" name = "updateAddBtn" value="정보수정" onclick="location.href='<%=request.getContextPath()%>/member/memberAddress';" style="margin-bottom:10px">
+					</div>
+				</td>
+			</tr>
 			<tr>
 				<th colspan ="8"><input name = "orderBtn" type="button" value="주문하기"/></th>
 			</tr>
@@ -100,7 +112,7 @@ $("[name=orderBtn]").on('click',function(){
         amount : <%=pb.getProduct_buy_count()%>,
         buyer_email : '<%=member.getEmail()%>',
         buyer_name : '<%=member.getName()%>',
-        buyer_tel : '01062860083',
+        buyer_tel : '<%=member.getPhone()%>',
         buyer_addr : '<%=address.getAddress() + address.getDetailAddress()%>',
         buyer_postcode : '<%=address.getZipCode()%>',
     }, function(rsp) {
