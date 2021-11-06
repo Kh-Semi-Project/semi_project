@@ -33,7 +33,7 @@ table tr td{
 </style>
 <%if(member != null){ %>
 <h2>승인 요청 리스트 확인</h2>
-<section id="product-order-container">
+<section id="product-order-container" <%if(pwlist.size() > 5){%>style="height: auto;<%}%>">
 	<table id="tbl-board">
 		<tr style="border-top: 1px solid black;">
 			<th colspan="3">제품정보</th> <!-- 제품 사진, 제품명 클릭시 해당 판매 글 페이지로 이동 -->

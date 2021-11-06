@@ -75,7 +75,7 @@
 	table#tbl-comment tr:hover button.btn-delete{display:inline;}
 	
 	</style>
-	<section id = "product-writing_view-container " style="margin-top:300px;">
+	<section id = "product-writing_view-container " style="margin-top:300px; <%if(pwqlist.size()>5){%>height: auto;<%} %>">
 	<h2>판매 제품 글 보기</h2>
 		<table class = "productwritingview table-location">
 			<tr>

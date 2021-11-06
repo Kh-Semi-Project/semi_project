@@ -15,7 +15,7 @@
 		color:white;
 	}
 </style>
-<section id="product-order-container" style="margin-top:200px;">
+<section id="product-order-container" style="margin-top:200px; <%if(pbs.size() > 5){%>height: auto;<%}%>">
 	<table id="product-order" style="margin-bottom:50px;">
 		<tr>
 			<th>번호</th>

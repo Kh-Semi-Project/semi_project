@@ -15,7 +15,7 @@
 	}
 </style>
 <h2>제품 리스트</h2>
-<section id="product-list-container">
+<section id="product-list-container" style="<%if(productList.size() > 5){%>height: auto;<%}%>">
 	<table id="product-list">
 		<tr>
 			<th>번호</th>
