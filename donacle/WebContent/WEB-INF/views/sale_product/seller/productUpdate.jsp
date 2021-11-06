@@ -27,7 +27,7 @@
 	</style>
 	 <%@ include file="/WEB-INF/views/homepage_introduce/header.jsp" %>
 	<section id = "product-add-container" style="margin-top:200px; text-align:center;">
-	<h2>물건 추가</h2>
+	<h2>물건 수정</h2>
 	<form
 		name = "productAddFrm"
 		action = "<%=request.getContextPath() %>/sale_product/productUpdate"

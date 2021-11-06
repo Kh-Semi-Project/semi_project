@@ -23,7 +23,7 @@ public class ProductViewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 사용자입력 값처리
 		int product_code = Integer.parseInt(request.getParameter("product_code"));
-		System.out.println(product_code);
+		System.out.println("ProductViewServlet@"+product_code);
 		
 		// 2. 업무로직
 		// 제품 글 가져오기

@@ -31,6 +31,7 @@ public class ProductWritingViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 사용자입력 값처리
 		int pw_code = Integer.parseInt(request.getParameter("code")); //제품 상세 내용을 보려는 글의 코드
+		int p_code = Integer.parseInt(request.getParameter("pcode")); //제품 상세 내용을 보려는 글의 코드
 		
 		// 비지니스로직 호출
 		Cookie[] cookies = request.getCookies();
@@ -68,7 +69,7 @@ public class ProductWritingViewServlet extends HttpServlet {
 			System.out.println("updateReadCount@" + result);
 			}
 			//게시글 하나 가져오기
-			ProductWriting pw = pws.selectOneProductWriting(pw_code);
+			ProductWriting pw = pws.selectOneProductWriting(p_code);
 			System.out.println(pw);
 			
 			

@@ -43,7 +43,7 @@
 	<div class = "top_product top_product" style="text-align:center; height:220px; margin:auto">
 	<%for(ProductWriting toppw : toplist){ %>
 	<div class = "product_writings_row" style="text-align:center;padding-top:20px;">
-				<a href="<%= request.getContextPath() %>/sale_product/ProductWritingView?code=<%= toppw.getProduct_writing_code() %>">
+				<a href="<%= request.getContextPath() %>/sale_product/ProductWritingView?code=<%= toppw.getProduct_writing_code() %>&&pcode=<%= toppw.getProduct_code()%>">
 					<img src = "<%= toppw.getProduct_img() %>" width="100px" height="120px"/><br/>
 					<%= toppw.getId() %><br/>
 					<%= toppw.getProduct_name() %><br/>
@@ -67,7 +67,7 @@
 		<h3>모든 제품</h3>
 <%for(ProductWriting pw : list){ %>
 <div class = "product_writings_row" >
-			<a href="<%= request.getContextPath() %>/sale_product/ProductWritingView?code=<%= pw.getProduct_writing_code() %>">
+			<a href="<%= request.getContextPath() %>/sale_product/ProductWritingView?code=<%= pw.getProduct_writing_code()%>&&pcode=<%= pw.getProduct_code()%>">
 				<img src = "<%= pw.getProduct_img() %>" width="60px" height="70px"/><br/>
 				<%= pw.getId() %><br/>
 				<%= pw.getProduct_name() %><br/>
