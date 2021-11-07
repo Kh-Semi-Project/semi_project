@@ -49,6 +49,7 @@ public class CartListDao {
 				cartList.setProduct_name(rset.getString("product_name"));
 				cartList.setProduct_price(rset.getInt("product_price"));
 				cartList.setShipping_fee(rset.getInt("shipping_fee"));
+				cartList.setProduct_writing_code(rset.getInt("product_writing_code"));
 		
 				System.out.println(cartList);
 				list.add(cartList);

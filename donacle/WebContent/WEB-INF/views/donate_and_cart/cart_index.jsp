@@ -105,7 +105,7 @@ td {
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="product" id="<%= (c.getProduct_price() * c.getProduct_cart_count()) + c.getShipping_fee() %>"/></td>
-					<td><img src="<%= c.getProduct_img() %>" alt="" width="100px" height="100px" /></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/sale_product/ProductWritingView?code=<%=c.getProduct_writing_code()%>&&pcode=<%=c.getProduct_code()%>'"><img src="<%= c.getProduct_img() %>" alt="" width="100px" height="100px" /></td>
 					<td><%= c.getProduct_name() %></td>
 					<td><%= c.getProduct_price() %>원</td>
 					<td><%= c.getProduct_cart_count() %>개</td>
