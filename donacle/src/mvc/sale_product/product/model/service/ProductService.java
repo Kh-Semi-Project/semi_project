@@ -188,6 +188,7 @@ public class ProductService {
 		Connection conn = getConnection();
 		int pw = pwdao.selectProductynList(conn, codes);
 		close(conn);
+		System.out.println("pw@"+pw);
 		if(pw != 0) return 0;
 		else {
 			return ProductDelete(codes);

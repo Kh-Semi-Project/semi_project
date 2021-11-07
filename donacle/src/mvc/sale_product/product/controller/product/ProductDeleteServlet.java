@@ -25,8 +25,10 @@ public class ProductDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] codes = request.getParameter("codes").replace("\"","").replace("[","").replace("]","").split(",");
 //		System.out.println("productbuyCancel@servlet@codes@" + Arrays.toString(codes));
-		System.out.println(codes);
+		System.out.println("codes@"+codes);
+		
 		int result_count = pws.selectProductynList(codes);
+		System.out.println("rresult_count@"+result_count);
 		String msg = "";
 		if(result_count == 0) {
 			msg ="배송출발 혹은 주문수령 되지않은 제품이 있습니다.\n삭제 할 수 없습니다.";
