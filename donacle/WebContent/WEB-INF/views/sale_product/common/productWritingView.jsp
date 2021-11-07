@@ -106,7 +106,7 @@
 			<tr>
 				<td>구매 수량</td>
 				<td><input type="button" id = "minus" class = "plus-minusBtn" value = '-'></td>
-				<td><input type="text" id = "pm_value" class = "plus-minusBtn" value = 1></td>
+				<td><input type="text" id = "pm_value" class = "plus-minusBtn" value = <%= pw.getProduct_count() == 0 ? 0 : 1%>></td>
 				<td><input type="button" id = "plus" class = "plus-minusBtn"  value = '+'></td>
 			</tr>
 		</table>
@@ -125,7 +125,7 @@
 <%if("C".equals(member.getKind())){%>
 					<tr>
 						<td><input name = "cart" class="productwritingviewBtn hovercolor" type="button" value="장바구니"/></td>
-						<td><input name = "buy" class="productwritingviewBtn hovercolor" type="submit" value="구매하기"/></td>
+						<td><input name = "buy" class="productwritingviewBtn hovercolor" type="button" value="구매하기"/></td>
 					</tr>
 <%} %>
 					<tr>
@@ -237,10 +237,17 @@ if(pwqlist != null && !pwqlist.isEmpty()){
 	<%@ include file="/WEB-INF/views/homepage_introduce/footer.jsp" %>
 	<script>
 	
+	$("[name=buy]").click(function(){
+		if($("#pm_value").val() == 0){
+			alert("0개는 구매할 수 없습니다.");
+		}else{
+			$("[name=buyProductFrm]").submit();
+		}
+	});
 	//- 누를때마다 -1씩 추가
 	$("#minus").click((e)=>{
 		check_count(-1);
-		if($("#pm_value").val() > <%= pw.getProduct_count()%>){
+		if($("#pm_value").val() < 0){
 			alert("남은 수량보다 많이 살 수 없습니다.");
 			$("#pm_value").val(<%= pw.getProduct_count()%>);
 		}
