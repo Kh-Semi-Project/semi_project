@@ -48,7 +48,7 @@
 				</div>	
 								
 				<div class="review-content">
-					<div class="review-content-date"><%= review.getName() == null ? "비회원" : review.getName() %> [<%= review.getReviewDate() %> 등록]</div>
+					<div class="review-content-date"><%= review.getName() == null ? "탈퇴회원" : review.getName() %> [<%= review.getReviewDate() %> 등록]</div>
 					<%if(isContain){%>
 						<div class="review-content-img" style="margin-top: 12px;"><img alt="" class="review-img" src="<%=request.getContextPath()%>/common/imgLoad?attachNo=<%=review.getAttach().getAttachNo()%>"></div>
 					<%}%>
@@ -82,7 +82,7 @@
 									<button class="btn-a" onclick="replyToggle(this)">답글</button>
 									<%} %>
 									<div class="comment-footer">
-										<span class="cmt-nm"><%=comment.getName() == null ? "비회원" : comment.getName()%></span> 
+										<span class="cmt-nm"><%=comment.getName() == null ? "탈퇴회원" : comment.getName()%></span> 
 										<span class="cmt-dt"><%=comment.getCommentsDate().substring(0, 10)%></span>
 										<%if(comment.getId() != null && comment.getId().equals(loginId)){%> <!--  세션정보 수정하기 -->
 										<span class="cmt-up" onclick="cmtUpdate(this, <%=comment.getCommentsNo()%>)">수정</span>
@@ -249,7 +249,7 @@
 	}
 	
 	function nonName(str){
-		if(!str || str == "") return "비회원";
+		if(!str || str == "") return "탈퇴회원";
 		return str;
 	}
 	
