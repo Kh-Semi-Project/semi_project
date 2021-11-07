@@ -25,12 +25,13 @@ public class ProductWritingCommentDeleteServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8"); // 값이 깨져서 추가
 		int product_question_code = Integer.parseInt(request.getParameter("product_question_code"));
 		int product_writing_code = Integer.parseInt(request.getParameter("product_writing_code"));
+		int product_code = Integer.parseInt(request.getParameter("product_code"));
 
 		// 2. 업무로직
 		int result = ps.DeleteProductComment(product_question_code);
 		System.out.println(result > 0 ? "댓글 등록 성공":"댓글 등록 실패");
 		// 3. 응답처리
-		String location = request.getContextPath() + "/sale_product/ProductWritingView?code="+product_writing_code;
+		String location = request.getContextPath() + "/sale_product/ProductWritingView?code="+product_writing_code+"&&pcode="+product_code;
 		
 		response.sendRedirect(location);
 	}

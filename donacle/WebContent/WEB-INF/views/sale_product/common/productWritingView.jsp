@@ -144,6 +144,7 @@
 					<!-- 아이디는 session에서 가져와서 수정 필요 -->
 					<input type="hidden" name="writer" value="<%=member.getId() %>" />
 					<input type="hidden" name="product_writing_code" value="<%= pw.getProduct_writing_code()%>" />
+					<input type="hidden" name="product_code" value="<%= pw.getProduct_code()%>" />
 					<input type="hidden" name="commentRef" value="0" />
 					<input type="hidden" name="comment_secret" value="0" /> <!-- 0이면 공개댓글, 1이면 비밀댓글 -->
 					<input type="hidden" name="comment_content" value="" /> 
@@ -195,6 +196,7 @@ if(pwqlist != null && !pwqlist.isEmpty()){
 						<form action="<%= request.getContextPath() %>/sale_product/CommentDelete" name="deleteCommentFrm" method="POST">
 							<input type="hidden" name="product_question_code" value="<%= pwq.getProduct_question_code() %>" />
 							<input type="hidden" name="product_writing_code" value="<%= pwq.getProduct_writing_code() %>" />
+							<input type="hidden" name="product_code" value="<%= pw.getProduct_code()%>" />
 						</form>
 						<button class="btn-delete">삭제</button>
 	<% } %>
