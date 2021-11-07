@@ -27,7 +27,7 @@ public class ProductViewServlet extends HttpServlet {
 		
 		// 2. 업무로직
 		// 제품 글 가져오기
-		ProductWriting pw = ps.selectOneProductWriting(product_code);
+		ProductWriting pw = ps.selectOneProduct(product_code);
 		
 		//응답처리
 		request.setAttribute("ProductWriting", pw);

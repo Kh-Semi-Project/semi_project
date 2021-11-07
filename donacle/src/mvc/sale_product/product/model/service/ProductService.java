@@ -254,4 +254,11 @@ public class ProductService {
 		close(conn);
 		return address;
 	}
+
+	public ProductWriting selectOneProduct(int product_code) {
+		Connection conn = getConnection();
+		ProductWriting pw = pwdao.selectOneProduct(conn, product_code);
+		close(conn);
+		return pw;
+	}
 }

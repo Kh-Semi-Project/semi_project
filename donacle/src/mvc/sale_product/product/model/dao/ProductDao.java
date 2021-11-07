@@ -155,7 +155,6 @@ public class ProductDao {
 				pw.setRead_count(rset.getInt("read_count")); // 조회수
 				pw.setProduct_writing_date(rset.getDate("product_writing_date"));
 				pw.setProduct_name(rset.getString("product_name"));
-				pw.setId(rset.getString("id"));
 				pw.setCategory_code(rset.getInt("CATEGORY_CODE"));
 				pw.setProduct_price(rset.getInt("product_price"));
 				pw.setProduct_img(rset.getString("product_img"));
@@ -832,5 +831,38 @@ public class ProductDao {
 			close(pstmt);
 		}
 		return address;
+	}
+
+	public ProductWriting selectOneProduct(Connection conn, int product_code) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectOneProduct");
+		ProductWriting pw = new ProductWriting();
+		System.out.println("dao@selectOneProductWriting@code : " + product_code);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, product_code);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				pw.setId(rset.getString("id"));
+				pw.setProduct_name(rset.getString("product_name"));
+				pw.setCategory_code(rset.getInt("CATEGORY_CODE"));
+				pw.setProduct_price(rset.getInt("product_price"));
+				pw.setProduct_img(rset.getString("product_img"));
+				pw.setProduct_count(rset.getInt("product_count")); //남은 제품 개수
+				pw.setProduct_code(rset.getInt("product_code"));
+				pw.setProduct_content(rset.getString("product_content")); //제품 정보
+				pw.setShipping_fee(rset.getInt("shipping_fee"));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return pw;
 	}
 }

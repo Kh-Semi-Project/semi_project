@@ -49,8 +49,8 @@ index++;
 			<td><%=index %></td>
 			<td><img src="<%=pb.getProduct_img() %>" width="100px" height="150px"/></td>
 			<td><%=pb.getProduct_name() %></td>
-			<td><%=pb.getProduct_buy_count() %></td>
-			<td><%=pb.getPrice_sum()%>&nbsp;<%= pb.getProduct_donate_price() %></td>
+			<td><%=pb.getProduct_buy_count() %>개</td>
+			<td><%=pb.getPrice_sum()+pb.getProduct_donate_price() %>원</td>
 			<td><%=pb.getProduct_buy_date() %></td>
 			<td>
 			
