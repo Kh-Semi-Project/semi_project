@@ -32,7 +32,7 @@ public class ProductWritingViewServlet extends HttpServlet {
 		// 1. 사용자입력 값처리
 		int pw_code = Integer.parseInt(request.getParameter("code")); //제품 상세 내용을 보려는 글의 코드
 		int p_code = Integer.parseInt(request.getParameter("pcode")); //제품 상세 내용을 보려는 글의 코드
-		
+		System.out.println("pw_code@"+pw_code+" " + "p_code@"+p_code);
 		// 비지니스로직 호출
 		Cookie[] cookies = request.getCookies();
 		boolean hasRead = false;
