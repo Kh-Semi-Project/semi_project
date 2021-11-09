@@ -95,6 +95,7 @@ public class ProductDao {
 				ProductWriting pw = new ProductWriting();
 				pw.setId(rset.getString("id"));
 				pw.setProduct_writing_code(rset.getInt("product_writing_code"));
+				pw.setProduct_code(rset.getInt("product_code"));
 				pw.setRead_count(rset.getInt("read_count"));
 				pw.setProduct_writing_date(rset.getDate("product_writing_date"));
 				pw.setCategory_code(rset.getInt("category_code"));

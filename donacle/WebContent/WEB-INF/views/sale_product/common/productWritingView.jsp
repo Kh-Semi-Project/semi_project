@@ -224,6 +224,7 @@ if(pwqlist != null && !pwqlist.isEmpty()){
 					<form style="display:none;" action="<%= request.getContextPath() %>/sale_product/CommentDelete" name="deleteCommentFrm" method="POST">
 						<input type="hidden" name="product_question_code" value="<%= pwq.getProduct_question_code() %>" />
 						<input type="hidden" name="product_writing_code" value="<%= pwq.getProduct_writing_code() %>" />
+						<input type="hidden" name="product_code" value="<%= pw.getProduct_code() %>" />
 					</form>
 					<button class="btn-delete">삭제</button>
 <% } %>
@@ -324,7 +325,6 @@ if(pwqlist != null && !pwqlist.isEmpty()){
 		$(".btn-reply").click((e) => {
 			const commentRef = $(e.target).val();
 			const parent_secret = $(e.target).attr("id");
-			alert(parent_secret);
 			const tr = `<tr>
 			<td colspan="2" style="text-align: left;">
 				<form 
